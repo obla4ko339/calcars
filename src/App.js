@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Typewindows from './components/Typewindows';
+import list from './components/list';
+;
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+
+
+ export default class App extends React.Component{
+    
+
+  render(){
+    if(!list) return false;
+
+      return(
+          <div className="container-widget-calc">
+
+              <div className="container-widget-calc-block">
+
+                <div> 
+                    {
+                      list.map((item, index)=>(
+                        <div key={item.id}>
+                          <Typewindows imgwindows={item.imgwindows}  titlewind={item.titlewind} />
+                        </div>
+                      ))
+                    }
+                </div>
+
+                <div> 
+                  
+                </div>
+
+
+                <div> 
+                  
+                </div>
+
+
+              </div>
+
+
+            </div>
+      )
+  }
+
+ }
+
+
+
