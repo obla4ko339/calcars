@@ -1,0 +1,6 @@
+.container-widget-calc-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
