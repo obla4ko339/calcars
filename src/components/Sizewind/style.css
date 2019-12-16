@@ -1,0 +1,6 @@
+.containerSize {
+    display: flex;
+}
+.containerSize > div {
+    margin: 0px 3px;
+}

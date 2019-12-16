@@ -1,0 +1,8 @@
+.dopService {
+    display: flex;
+    flex-flow: wrap;
+}
+.dopService > div {
+    max-width: 150px;
+    width: 100%;
+}
