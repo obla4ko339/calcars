@@ -13,6 +13,7 @@ import './components/Sliderrange/style.css'
 import './components/Typeprofile/style.css'
 import './components/Dopprofile/style.css'
 import './components/Sizewind/style.css'
+import {connect} from 'react-redux'
 
 
 
@@ -21,29 +22,31 @@ import './components/Sizewind/style.css'
   constructor(props){
     super(props)
 
-    this.state = {indexImg:1}
+    this.state = {indexImg:1, totalPrice:0}
 
   }
 
 
-  handleImg(index){
-    console.log(index)
+  hadleImg(index){
+    
     this.setState({indexImg:index})
+    this.props.hadleWindow(index);
+    
     return index;
   }
 
   render(){
     if(!listWindows) return false;
-      console.log(listWindows);
+      
       return(
           <div className="container-widget-calc">
 
               <div className="container-widget-calc-block">
-
+              {console.log(this.props.windowProps)}
                 <div> 
                     {
                       listWindows.map((item)=>(
-                        <div key={item.id} onClick={()=>{this.handleImg(item.id)}}>
+                        <div key={item.id} onClick={()=>{this.hadleImg(item.id)}} >
                           <Typewindows imgwindows={item.imgwindows}   titlewind={item.titlewind} />
                         </div>
                       ))
@@ -60,7 +63,7 @@ import './components/Sizewind/style.css'
                   <div>
                   {
                     // this.state.indexImg ? listWindows[this.state.indexImg].bigimg : "No photo"
-                    this.state.indexImg ? <Bigwind bigSizeImg={listWindows[this.state.indexImg].bigimg}/> : "No photo"
+                    this.state.indexImg ? <Bigwind bigSizeImg={listWindows[this.props.windowProps].bigimg}/> : "No photo"
                   }
                   </div>
 
@@ -101,10 +104,22 @@ import './components/Sizewind/style.css'
                   {
                     dopList.map((item, index)=>(
                       <div key={item.id}>
-                        <Dopprofile nameForm={item.nameForm} valueInput={item.name} idForm={item.name}  priceDop={item.price} />
+                        <Dopprofile nameForm={item.nameForm} valueInput={item.name} idForm={item.name}  priceDop={item.pricedef} />
                       </div>
                     ))
                   }
+                   
+                  
+                 
+                  <div className="container-price-block">
+                  <div className="price-title">
+                  Стоимость
+                  
+                  </div>
+                  <div className="price-number">
+                  {this.state.totalPrice}P
+                  </div>
+                  </div>
 
                   </div>
                   
@@ -119,6 +134,5 @@ import './components/Sizewind/style.css'
   }
 
  }
-
 
 
