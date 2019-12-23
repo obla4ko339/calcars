@@ -10,7 +10,7 @@ export default function Sizewind(props){
                 {props.typeSize}
             </div>
             <div>
-                <input type="text" name={props.nameForm} id={props.idForm} value={props.sizeWind} placeholder={props.sizeWind}/>
+                <input type="text" name={props.nameForm} id={props.idForm} value={props.sizeWind} placeholder={props.sizeWind}  />
             </div>
             
         </div>

@@ -55,7 +55,7 @@ import {connect} from 'react-redux'
 
                 <div className="main-img-scroll"> 
                   <div className="scroll-vertical">
-                    <Sliderrange minVal="500" maxVal="2400" defVal="1500" />
+                    <Sliderrange minVal="500" maxVal="2400" defVal="1500" hadleSetWidth={this.props.handleSetHeight}/>
                   </div>    
 
                   <div className="img-with-scroll">
@@ -68,7 +68,7 @@ import {connect} from 'react-redux'
                   </div>
 
                   <div>
-                   <Sliderrange minVal="1000" maxVal="1600" defVal="1330" />
+                   <Sliderrange minVal="1000" maxVal="1600" defVal="1330" hadleSetWidth={this.props.hadleSetWidth} />
                   </div>
                                     
                   </div>
@@ -87,7 +87,10 @@ import {connect} from 'react-redux'
                       idProfile={item.idProfile} 
                       nameForm="typeProfile"  
                       title={item.title}
+                      index={item.id}
                       nameProfile={item.namePfile}
+                      handleSetTypeProfile={this.props.handleSetTypeProfile}
+                      key={item.id}
                       />
                       </div>
                     ))
@@ -95,8 +98,8 @@ import {connect} from 'react-redux'
                   </div>
 
                   <div className="containerSize">
-                    <Sizewind nameForm="widthWind" idForm="widthWind"  sizeWind="500" typeSize="Ширина"/>
-                    <Sizewind nameForm="heightWind" idForm="heightWind"  sizeWind="1500" typeSize="Высота"/>  
+                    <Sizewind nameForm="widthWind" idForm="widthWind"  sizeWind={this.props.widthdef ? this.props.widthdef : 0} typeSize="Ширина" hadleSetWidth={this.props.hadleSetWidth} />
+                    <Sizewind nameForm="heightWind" idForm="heightWind"  sizeWind={this.props.heightdef ? this.props.heightdef : 0} typeSize="Высота"/>  
                   </div>
 
                   <div className="dopService">
@@ -104,7 +107,7 @@ import {connect} from 'react-redux'
                   {
                     dopList.map((item, index)=>(
                       <div key={item.id}>
-                        <Dopprofile nameForm={item.nameForm} valueInput={item.name} idForm={item.name}  priceDop={item.pricedef} />
+                        <Dopprofile nameForm={item.nameForm} valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} hadleSetDopOptcii={this.props.hadleSetDopOptcii} />
                       </div>
                     ))
                   }
@@ -117,7 +120,10 @@ import {connect} from 'react-redux'
                   
                   </div>
                   <div className="price-number">
-                  {this.state.totalPrice}P
+                  {
+                    this.props.pricedef ? this.props.pricedef : 0
+                  }
+                  ₽
                   </div>
                   </div>
 
