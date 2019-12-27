@@ -11,10 +11,11 @@ const initialState = {
     dopOptciiProps:"",
 }
 
-
+let listDopObj = {}
 
 
 export default function selectWindCalc(state=initialState, action){
+   
     switch(action.type){
         case SET_WINDOW:
         state = listWindows[action.data]
@@ -34,10 +35,11 @@ export default function selectWindCalc(state=initialState, action){
                 ...state, ...{typeProfileProps:listprofile[action.data].pricedef}
             }
         case SET_DOP_OPTCII:
-            console.log(action.data)
+
+            listDopObj[dopList[action.data].nameForm]=dopList[action.data].pricedef
+          
             return{
-                //...state, ...{dopOptciiProps:action.data}
-                ...state, ...{price:[action.data[dopList[action.data].pricedef]]}
+                ...state, ...{price:listDopObj}
             }
         default:
             return state;

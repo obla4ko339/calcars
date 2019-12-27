@@ -81,7 +81,7 @@ import {connect} from 'react-redux'
                   
                   <div>
                   {
-                    listprofile.map((item, index)=>(
+                    listprofile[this.props.id ? this.props.id : 0].map((item, index)=>(
                       <div key={item.id}>
                       <Typeprofile 
                       idProfile={item.idProfile} 
@@ -105,8 +105,9 @@ import {connect} from 'react-redux'
                   <div className="dopService">
 
                   {
-                    dopList.map((item, index)=>(
+                    dopList[this.props.id ? this.props.id : 0].map((item, index)=>(
                       <div key={item.id}>
+                      {console.log(item)}
                         <Dopprofile nameForm={item.nameForm} valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} hadleSetDopOptcii={this.props.hadleSetDopOptcii} />
                       </div>
                     ))
