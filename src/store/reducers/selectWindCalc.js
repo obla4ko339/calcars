@@ -36,8 +36,10 @@ export default function selectWindCalc(state=initialState, action){
             }
         case SET_DOP_OPTCII:
 
-            listDopObj[dopList[action.data].nameForm]=dopList[action.data].pricedef
-          
+            //listDopObj[dopList[state.id].nameForm]=dopList[action.data].pricedef
+            // listDopObj[dopList[state.id]][action.data] = 
+            console.log(dopList[state.id][action.data])
+            console.log(state)
             return{
                 ...state, ...{price:listDopObj}
             }
