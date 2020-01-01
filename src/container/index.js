@@ -19,7 +19,8 @@ const mapStateToProps = (state)=>(
         titlewind:state.selectWindCalc.titlewind,
         imgwindows:state.selectWindCalc.imgwindows,
         bigimg:state.selectWindCalc.bigimg,
-        windowProps:state.selectWindCalc.windowProps
+        windowProps:state.selectWindCalc.windowProps,
+        pricetotal:state.selectWindCalc
     }
     
   )

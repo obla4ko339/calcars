@@ -13,7 +13,7 @@ import './components/Sliderrange/style.css'
 import './components/Typeprofile/style.css'
 import './components/Dopprofile/style.css'
 import './components/Sizewind/style.css'
-import {connect} from 'react-redux'
+
 
 
 
@@ -26,12 +26,33 @@ import {connect} from 'react-redux'
 
   }
 
+  totalPrice(){
+    let objState = this.props.pricetotal
+    let priceWindow = objState.pricedef
+    let priceTypeProfile = objState.typeProfileProps ? objState.typeProfileProps.pricedef : 0
+    let dopForWind = objState.price ? objState.price : 0
+    let priceForWind = 0
+    for(let priceDop in dopForWind){
+      priceForWind += parseInt(dopForWind[priceDop])
+    }
+   
+    let result = parseInt(priceWindow) + parseInt(priceTypeProfile) + parseInt(priceForWind)
+    return result
+  }
+
 
   hadleImg(index){
     
     this.setState({indexImg:index})
     this.props.hadleWindow(index);
-    
+    let dopprofileId = document.getElementsByClassName("dop-profile")
+    let typeprofile = document.getElementsByClassName("type-profile")
+    for(let i=0; i<typeprofile.length; i++){
+      typeprofile[i].checked = false
+    }
+    for(let i=0; i<dopprofileId.length; i++){
+      dopprofileId[i].checked = false
+    }
     return index;
   }
 
@@ -42,7 +63,7 @@ import {connect} from 'react-redux'
           <div className="container-widget-calc">
 
               <div className="container-widget-calc-block">
-              {console.log(this.props.windowProps)}
+             
                 <div> 
                     {
                       listWindows.map((item)=>(
@@ -63,7 +84,8 @@ import {connect} from 'react-redux'
                   <div>
                   {
                     // this.state.indexImg ? listWindows[this.state.indexImg].bigimg : "No photo"
-                    this.state.indexImg ? <Bigwind bigSizeImg={listWindows[this.props.windowProps].bigimg}/> : "No photo"
+                    // this.state.indexImg ? <Bigwind bigSizeImg={listWindows[this.props.windowProps].bigimg}/> : "No photo"
+                    this.state.indexImg ? <Bigwind bigSizeImg={listWindows[this.props.id].bigimg}/> : "No photo"
                   }
                   </div>
 
@@ -107,8 +129,8 @@ import {connect} from 'react-redux'
                   {
                     dopList[this.props.id ? this.props.id : 0].map((item, index)=>(
                       <div key={item.id}>
-                      {console.log(item)}
-                        <Dopprofile nameForm={item.nameForm} valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} hadleSetDopOptcii={this.props.hadleSetDopOptcii} />
+                      
+                        <Dopprofile nameForm={item.nameForm}  valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} hadleSetDopOptcii={this.props.hadleSetDopOptcii} />
                       </div>
                     ))
                   }
@@ -121,8 +143,9 @@ import {connect} from 'react-redux'
                   
                   </div>
                   <div className="price-number">
+          
                   {
-                    this.props.pricedef ? this.props.pricedef : 0
+                    this.props.pricedef ? this.totalPrice() : 0
                   }
                   ₽
                   </div>

@@ -1,17 +1,37 @@
 import React from 'react'
 
-export default function Dopprofile(props){
 
-    return (
+
+
+export default class Dopprofile extends React.Component{
+    
+    constructor(props){
+        super(props)
+    }
+
+    stateDopWin(e){
+        let objDobParams = {
+            index:0,
+            stateDop:false
+        }
+        objDobParams.index = e.currentTarget.dataset.id
+        objDobParams.stateDop = e.currentTarget.checked
+        this.props.hadleSetDopOptcii({...objDobParams})
+        
+    }
+
+    render()
+    {return (
         <div className="dop-profile">
             <div>
-                <input type="checkbox" name={props.nameForm} value={props.valueInput} id={props.idForm} data-id={props.index}  onClick={(e)=>props.hadleSetDopOptcii(e.currentTarget.dataset.id)}/>
-                <label htmlFor={props.idForm}>{props.valueInput}</label>
+                <input type="checkbox" name={this.props.nameForm} className="dop-profile" value={this.props.valueInput} id={this.props.idForm} data-id={this.props.index}  
+                onClick={(e)=> this.stateDopWin(e)}/>
+                <label htmlFor={this.props.idForm}>{this.props.valueInput}</label>
             </div>
             <div className="priceForm">
-                +{props.priceDop}P
+                +{this.props.priceDop}P
             </div>
             
         </div>
-    )
+    )}
 }
