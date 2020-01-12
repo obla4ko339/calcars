@@ -5,6 +5,17 @@ const listWindows = [
     {id:"3", pricedef:"10550", widthdef:"1000", heightdef:"1400", titlewind:"Балкон", imgwindows:"https://www.oknakomforta.ru/wincalc18/images/win-b-t.png", bigimg:"https://www.oknakomforta.ru/wincalc18/images/constructor/window-b-frame.jpg"}
 ]
 
+
+let resultListWin = null
+
+fetch("http://v339.ru/listWindows.php")
+    .then(response=>(response.json()))
+    .then(result=>{resultListWin = result})
+
+
+console.log(resultListWin)
+
 export{
     listWindows
+    
 }
