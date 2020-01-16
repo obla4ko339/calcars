@@ -6,14 +6,64 @@ const listWindows = [
 ]
 
 
-let resultListWin = null
+// let resultListWin = null
 
-fetch("http://v339.ru/listWindows.php")
-    .then(response=>(response.json()))
-    .then(result=>{resultListWin = result})
+// fetch("http://v339.ru/listWindows.php")
+//     .then(response=>(response.json()))
+//     .then(result=>{resultListWin = result})
+
+async function getData(){
+let resultList = null
+let response = await fetch("http://v339.ru/listWindows.php")
+let ressult = await response.json()
+let resultData = await ressult
+resultList = ressult
+return resultData
+}
 
 
-console.log(resultListWin)
+
+// function FetchAll(){
+// fetch("http://v339.ru/listWindows.php")
+//     .then(response=>{return response.json()})
+//     .then(result=>{
+           
+//             return result
+//     })
+// }
+
+
+
+
+//    let response = fetch("http://v339.ru/listWindows.php")
+//    response.then(response=>{return response.json()})
+//    response.then(result=>{return result})
+
+
+
+function fetchAll(fetchList){
+    fetch("http://v339.ru/listWindows.php")
+    .then(response=>{return response.json()})
+    .then(data=>{
+        fetchList(data)   
+        console.log(data) 
+        
+    })
+}
+let obj = {}
+function fetchList(list){
+    obj = list
+    return list
+}
+
+fetchAll(fetchList)
+setTimeout(function(){
+    console.log(obj) 
+}, 3000)
+   
+
+
+
 
 export{
     listWindows

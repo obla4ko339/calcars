@@ -16,7 +16,7 @@ export default class Dopprofile extends React.Component{
         }
         objDobParams.index = e.currentTarget.dataset.id
         objDobParams.stateDop = e.currentTarget.checked
-        this.props.hadleSetDopOptcii({...objDobParams})
+        this.props.fetchSetDopOptciiFunc({...objDobParams})
         
     }
 

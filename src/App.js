@@ -22,7 +22,11 @@ import './components/Sizewind/style.css'
   constructor(props){
     super(props)
 
-    this.state = {indexImg:1, totalPrice:0}
+    this.state = {
+      indexImg:1, 
+      totalPrice:0,
+      dopOptciiState:0
+    }
 
   }
 
@@ -42,9 +46,10 @@ import './components/Sizewind/style.css'
 
 
   hadleImg(index){
-    
+     
     this.setState({indexImg:index})
-    this.props.hadleWindow(index);
+    this.props.fetchSetWinFunc(index)
+    //this.props.hadleWindow(index);
     let dopprofileId = document.getElementsByClassName("dop-profile")
     let typeprofile = document.getElementsByClassName("type-profile")
     for(let i=0; i<typeprofile.length; i++){
@@ -56,8 +61,22 @@ import './components/Sizewind/style.css'
     return index;
   }
 
+  
+
+
+    componentWillMount(){
+      const {fetchListSuccessFunc} = this.props
+      fetchListSuccessFunc()
+
+      this.props.fetchGetDopOptciiFunc()
+    }
+
   render(){
     if(!listWindows) return false;
+    if(!this.props.dopElement) return false;
+    console.log(this.props.dopElement.dopOptcii)
+    
+    
       
       return(
           <div className="container-widget-calc">
@@ -112,6 +131,7 @@ import './components/Sizewind/style.css'
                       index={item.id}
                       nameProfile={item.namePfile}
                       handleSetTypeProfile={this.props.handleSetTypeProfile}
+                      fetchSetTypeProfileFunc ={this.props.fetchSetTypeProfileFunc}
                       key={item.id}
                       />
                       </div>
@@ -127,10 +147,10 @@ import './components/Sizewind/style.css'
                   <div className="dopService">
 
                   {
-                    dopList[this.props.id ? this.props.id : 0].map((item, index)=>(
+                    this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0].map((item, index)=>(
                       <div key={item.id}>
                       
-                        <Dopprofile nameForm={item.nameForm}  valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} hadleSetDopOptcii={this.props.hadleSetDopOptcii} />
+                        <Dopprofile nameForm={item.nameForm}   valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} fetchSetDopOptciiFunc={this.props.fetchSetDopOptciiFunc} />
                       </div>
                     ))
                   }

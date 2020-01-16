@@ -1,8 +1,9 @@
-import {SET_WINDOW, SET_WIDTH, SET_HEIGHT, SET_TYPE_PROFILE, SET_DOP_OPTCII} from '../action'
+import {SET_WINDOW, SET_WIDTH, SET_HEIGHT, SET_TYPE_PROFILE, SET_DOP_OPTCII, FETCH_LIST_SUCCESS, FETCH_SET_WIND, FETCH_SET_TYPE_PROFILE, FETCH_SET_DOP_OPTCII} from '../action'
 import {listWindows} from '../../components/data/list'
 import {listprofile} from '../../components/data/typeprofiledata'
 import {dopList} from '../../components/data/dopList'
 import {sizePrice} from '../../components/data/sizePrice'
+
 
 const initialState = {
     windowProps:"0",
@@ -14,12 +15,53 @@ const initialState = {
 
 
 
+
+
+
 let listDopObj = {}
 
 
 export default function selectWindCalc(state=listWindows[0], action){
    
     switch(action.type){
+        case FETCH_LIST_SUCCESS:
+            console.log(action.data[0])
+            return {
+                ...state, ...action.data[0]
+            }
+        case FETCH_SET_WIND:
+                for(let prof in  state.typeProfileProps){
+                    state.typeProfileProps[prof] = 0
+                }
+                
+                if(state.price){
+                    for(let dop in state.price){
+                        state.price[dop] = 0
+                    }
+                }
+
+            return {...state, ...action.data}
+
+        case FETCH_SET_TYPE_PROFILE:
+           
+            return {
+                ...state, ...{typeProfileProps:{...action.data[state.id][action.id]}}
+            }
+
+        case FETCH_SET_DOP_OPTCII:
+                
+               
+               
+                if(action.id.stateDop){
+                    listDopObj[action.data[state.id][action.id.index].nameForm] = action.data[state.id][action.id.index].pricedef
+                }else{
+                    listDopObj[action.data[state.id][action.id.index].nameForm] = 0
+                }
+            
+        return {
+            ...state, ...{price:{...listDopObj}}
+        }
+
         case SET_WINDOW:
         state = listWindows[action.data]
             state.price = 0

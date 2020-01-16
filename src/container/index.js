@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import App from '../App'
-import {setWindow, setWidth, setHeight , setTypeProfile, setDopOptcii} from '../store/action'
+import {setWindow, setWidth, setHeight , setTypeProfile, setDopOptcii, fetchListSuccess, fetchSetWind, fetchSetTypeProfile, fetchSetDopOptcii, fetchGetDopOptcii} from '../store/action'
 
 
 
@@ -20,13 +20,53 @@ const mapStateToProps = (state)=>(
         imgwindows:state.selectWindCalc.imgwindows,
         bigimg:state.selectWindCalc.bigimg,
         windowProps:state.selectWindCalc.windowProps,
-        pricetotal:state.selectWindCalc
+        pricetotal:state.selectWindCalc,
+
+       dopElement:state.getDopOptcii
     }
-    
   )
 
 
 const mapDispatchToProps = (dispatch)=>({
+    fetchListSuccessFunc:()=>{
+        fetch("http://v339.ru/listWindows.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+            dispatch(fetchListSuccess(data))
+        })
+    },
+    fetchSetWinFunc:(idWin)=>{
+        fetch("http://v339.ru/listWindows.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+
+            dispatch(fetchSetWind(data[idWin]))
+        })
+    },
+    fetchSetTypeProfileFunc:(typeProfile)=>{
+        fetch("http://v339.ru/typeProfile.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+          
+            dispatch(fetchSetTypeProfile(data, typeProfile))
+        })
+    },
+    fetchSetDopOptciiFunc:(dopOptciiId)=>{
+        fetch("http://v339.ru/dopList.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+           
+            dispatch(fetchSetDopOptcii(data, dopOptciiId))
+        })
+    },
+    fetchGetDopOptciiFunc:()=>{
+        fetch("http://v339.ru/dopList.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+           
+            dispatch(fetchGetDopOptcii(data))
+        })
+    },
     hadleWindow:(wind)=>{
         dispatch(setWindow(wind))
     },
