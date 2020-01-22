@@ -1,6 +1,19 @@
 import {connect} from 'react-redux'
 import App from '../App'
-import {setWindow, setWidth, setHeight , setTypeProfile, setDopOptcii, fetchListSuccess, fetchSetWind, fetchSetTypeProfile, fetchSetDopOptcii, fetchGetDopOptcii} from '../store/action'
+import {setWindow, 
+        setWidth, 
+        setHeight, 
+        setTypeProfile, 
+        setDopOptcii, 
+        fetchListSuccess, 
+        fetchSetWind, 
+        fetchSetTypeProfile, 
+        fetchSetDopOptcii, 
+        fetchGetDopOptcii, 
+        fetchGetTypeProfile, 
+        fetchGetGrassPaket,
+        fetchSuccessGetProfile
+    } from '../store/action'
 
 
 
@@ -22,7 +35,10 @@ const mapStateToProps = (state)=>(
         windowProps:state.selectWindCalc.windowProps,
         pricetotal:state.selectWindCalc,
 
-       dopElement:state.getDopOptcii
+        dopElement:state.getDopOptcii,
+        profile:state.getProfile,
+
+        listGrass:state.getGrassPaket
     }
   )
 
@@ -33,6 +49,14 @@ const mapDispatchToProps = (dispatch)=>({
         .then(response=>{return response.json()})
         .then(data=>{
             dispatch(fetchListSuccess(data))
+        })
+    },
+    fetchSuccessGetProfileFunc:()=>{
+        fetch("http://v339.ru/typeProfile.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+          
+            dispatch(fetchSuccessGetProfile(data))
         })
     },
     fetchSetWinFunc:(idWin)=>{
@@ -66,6 +90,23 @@ const mapDispatchToProps = (dispatch)=>({
            
             dispatch(fetchGetDopOptcii(data))
         })
+    },
+    fetchGetProfile:()=>{
+        fetch("http://v339.ru/typeProfile.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+          
+            dispatch(fetchGetTypeProfile(data))
+           
+        })
+    },
+    fetchGetGrassPaketHolder:()=>{
+        fetch("http://v339.ru/grassPokket.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+          console.log(data)
+            dispatch(fetchGetGrassPaket(data))
+        }) 
     },
     hadleWindow:(wind)=>{
         dispatch(setWindow(wind))

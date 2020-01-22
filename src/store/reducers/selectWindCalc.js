@@ -1,4 +1,13 @@
-import {SET_WINDOW, SET_WIDTH, SET_HEIGHT, SET_TYPE_PROFILE, SET_DOP_OPTCII, FETCH_LIST_SUCCESS, FETCH_SET_WIND, FETCH_SET_TYPE_PROFILE, FETCH_SET_DOP_OPTCII} from '../action'
+import {SET_WINDOW, 
+        SET_WIDTH, 
+        SET_HEIGHT, 
+        SET_TYPE_PROFILE, 
+        SET_DOP_OPTCII, 
+        FETCH_LIST_SUCCESS, 
+        FETCH_SET_WIND, 
+        FETCH_SET_TYPE_PROFILE, 
+        FETCH_SET_DOP_OPTCII, 
+        FETCH_SUCCESS_GET_PROFILE} from '../action'
 import {listWindows} from '../../components/data/list'
 import {listprofile} from '../../components/data/typeprofiledata'
 import {dopList} from '../../components/data/dopList'
@@ -25,10 +34,15 @@ export default function selectWindCalc(state=listWindows[0], action){
    
     switch(action.type){
         case FETCH_LIST_SUCCESS:
-            console.log(action.data[0])
+            
             return {
-                ...state, ...action.data[0]
+                ...state, ...action.data[0], ...{typeProfileProps:{id:"0"}}
             }
+        case FETCH_SUCCESS_GET_PROFILE:
+            return {
+                ...state, ...{typeProfileProps:{...action.data[0][0]}}
+            }
+
         case FETCH_SET_WIND:
                 for(let prof in  state.typeProfileProps){
                     state.typeProfileProps[prof] = 0
@@ -73,9 +87,7 @@ export default function selectWindCalc(state=listWindows[0], action){
                 ...state, ...{windowProps:action.data}
             }
         case SET_WIDTH:
-            console.log(
-                (parseInt(state.widthdef) * parseInt(state.heightdef)) + sizePrice
-            )
+            
             let priceWidths = (parseInt(state.widthdef) * parseInt(state.heightdef)) + sizePrice 
             return{
                 ...state, ...{widthdef:action.data}, ...{pricedef:priceWidths}

@@ -6,7 +6,7 @@ export default function Sizewind(props){
 
     return(
         <div className="sizeWind">
-            <div>
+            <div className="titleCalc">
                 {props.typeSize}
             </div>
             <div>

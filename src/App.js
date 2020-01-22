@@ -8,6 +8,7 @@ import Typeprofile from './components/Typeprofile'
 import Dopprofile from './components/Dopprofile'
 import Sizewind from './components/Sizewind'
 import Bigwind from './components/Bigwind'
+import Paket from './components/Paket'
 import './static/style/app.css'
 import './components/Sliderrange/style.css'
 import './components/Typeprofile/style.css'
@@ -69,12 +70,18 @@ import './components/Sizewind/style.css'
       fetchListSuccessFunc()
 
       this.props.fetchGetDopOptciiFunc()
+      this.props.fetchGetProfile()
+      this.props.fetchGetGrassPaketHolder()
+      this.props.fetchSuccessGetProfileFunc()
     }
 
   render(){
-    if(!listWindows) return false;
-    if(!this.props.dopElement) return false;
-    console.log(this.props.dopElement.dopOptcii)
+    if(!listWindows) return false
+    if(!this.props.dopElement) return false
+    if(!this.props.profile) return false
+    if(!this.props.listGrass) return false
+   
+    
     
     
       
@@ -121,13 +128,16 @@ import './components/Sizewind/style.css'
                 <div> 
                   
                   <div>
+                  <div className="titleCalc"> 
+                  Тип профиль
+                </div>
                   {
-                    listprofile[this.props.id ? this.props.id : 0].map((item, index)=>(
+                    this.props.profile.profile[this.props.id ? this.props.id : 0].map((item, index)=>(
                       <div key={item.id}>
                       <Typeprofile 
                       idProfile={item.idProfile} 
                       nameForm="typeProfile"  
-                      title={item.title}
+                      
                       index={item.id}
                       nameProfile={item.namePfile}
                       handleSetTypeProfile={this.props.handleSetTypeProfile}
@@ -139,13 +149,39 @@ import './components/Sizewind/style.css'
                   }
                   </div>
 
+
+                  <div>
+                    <div className="titleCalc"> 
+                      Стеклопакет
+                    </div>
+                    
+                 
+                    {
+                      this.props.listGrass.listGrass[this.props.id ? this.props.id : 0][0].map((item, index)=>(
+                        <div key={index}>
+                        <Paket 
+                        idProfile={item.idProfile}    
+                        namePfile={item.namePfile}
+    
+                        />
+                        </div>
+                      ))
+                    }
+
+                 
+                  </div>
+
+
                   <div className="containerSize">
                     <Sizewind nameForm="widthWind" idForm="widthWind"  sizeWind={this.props.widthdef ? this.props.widthdef : 0} typeSize="Ширина" hadleSetWidth={this.props.hadleSetWidth} />
                     <Sizewind nameForm="heightWind" idForm="heightWind"  sizeWind={this.props.heightdef ? this.props.heightdef : 0} typeSize="Высота"/>  
                   </div>
 
-                  <div className="dopService">
-
+                  <div className="container_dopService">
+                  <div className="titleCalc"> 
+                      Дополнительно
+                    </div>
+                    <div className="dopService"> 
                   {
                     this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0].map((item, index)=>(
                       <div key={item.id}>
@@ -155,10 +191,13 @@ import './components/Sizewind/style.css'
                     ))
                   }
                    
-                  
+                  </div>
+                  </div>
+
+                  <div>
                  
                   <div className="container-price-block">
-                  <div className="price-title">
+                  <div className="titleCalc price-title">
                   Стоимость
                   
                   </div>
