@@ -12,7 +12,8 @@ import {setWindow,
         fetchGetDopOptcii, 
         fetchGetTypeProfile, 
         fetchGetGrassPaket,
-        fetchSuccessGetProfile
+        fetchSuccessGetProfile,
+        fetchSuccessGetStvorki
     } from '../store/action'
 
 
@@ -38,7 +39,11 @@ const mapStateToProps = (state)=>(
         dopElement:state.getDopOptcii,
         profile:state.getProfile,
 
-        listGrass:state.getGrassPaket
+        listGrass:state.getGrassPaket,
+
+        getStvorki:state.getStvorki
+
+
     }
   )
 
@@ -101,11 +106,19 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchGetGrassPaketHolder:()=>{
-        fetch("http://v339.ru/grassPokket.php")
+        fetch("http://v339.ru/listGrass.php")
         .then(response=>{return response.json()})
         .then(data=>{
-          console.log(data)
+         
             dispatch(fetchGetGrassPaket(data))
+        }) 
+    },
+    fetchSuccessGetStvorkiFunc:()=>{
+        fetch("http://v339.ru/listStvorki.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+         
+            dispatch(fetchSuccessGetStvorki(data))
         }) 
     },
     hadleWindow:(wind)=>{

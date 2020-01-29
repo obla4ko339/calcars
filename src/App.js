@@ -9,6 +9,7 @@ import Dopprofile from './components/Dopprofile'
 import Sizewind from './components/Sizewind'
 import Bigwind from './components/Bigwind'
 import Paket from './components/Paket'
+import Stvorki from './components/Stvorki'
 import './static/style/app.css'
 import './components/Sliderrange/style.css'
 import './components/Typeprofile/style.css'
@@ -73,6 +74,11 @@ import './components/Sizewind/style.css'
       this.props.fetchGetProfile()
       this.props.fetchGetGrassPaketHolder()
       this.props.fetchSuccessGetProfileFunc()
+      this.props.fetchSuccessGetStvorkiFunc()
+    }
+
+    onHandleStvorki(data){
+      console.log(data.currentTarget)
     }
 
   render(){
@@ -80,6 +86,7 @@ import './components/Sizewind/style.css'
     if(!this.props.dopElement) return false
     if(!this.props.profile) return false
     if(!this.props.listGrass) return false
+    if(!this.props.getStvorki.stvorki) return false
    
     
     
@@ -154,10 +161,13 @@ import './components/Sizewind/style.css'
                     <div className="titleCalc"> 
                       Стеклопакет
                     </div>
-                    
+                    {
+                      //console.log(this.props.typeProfileProps === undefined ? 0 : this.props.typeProfileProps.id) 
+                      console.log(this.props.listGrass.listGrass)
+                    }
                  
                     {
-                      this.props.listGrass.listGrass[this.props.id ? this.props.id : 0][0].map((item, index)=>(
+                      this.props.listGrass.listGrass[this.props.typeProfileProps === undefined ? 0 : this.props.typeProfileProps.id].map((item, index)=>(
                         <div key={index}>
                         <Paket 
                         idProfile={item.idProfile}    
@@ -169,6 +179,25 @@ import './components/Sizewind/style.css'
                     }
 
                  
+                  </div>
+
+                  <div>
+                    <div className="titleCalc"> 
+                    Створка
+                    </div>
+
+                    {
+                        console.log(this.props.getStvorki)
+                    }
+                    {
+                     
+                      this.props.getStvorki.stvorki.map((item, index)=>(
+                        <div>
+                                <Stvorki idStvorki={item.idProfile} idSt={item.id} nameStvorki={item.namePfile} onHandleStvorki={this.onHandleStvorki.bind(this)} />
+                        </div> 
+                      ))
+                     
+                    }
                   </div>
 
 

@@ -6,7 +6,7 @@ export default function Typeprofile(props){
         <div  className="container-profile">
             <div>
                 {/* <input type="radio" name={props.nameForm} id={props.idProfile} className="type-profile"  value={props.index} onClick={(e)=>props.handleSetTypeProfile(e.currentTarget.value)}/> */}
-                <input type="radio" name={props.nameForm} id={props.idProfile} className="type-profile"  value={props.index} onClick={(e)=>props.fetchSetTypeProfileFunc(e.currentTarget.value)}/>
+                <input type="radio" name={props.nameForm} id={props.idProfile} className="type-profile"   value={props.index} onClick={(e)=>props.fetchSetTypeProfileFunc(e.currentTarget.value)}/>
                 <label htmlFor={props.idProfile}>{props.title}</label> 
             </div>
             <div>

@@ -11,12 +11,20 @@ export const FETCH_GET_DOP_OPTCII       = "FETCH_GET_DOP_OPTCII"
 export const FETCH_GET_TYPE_PROFILE     = "FETCH_GET_TYPE_PROFILE"
 export const FETCH_GET_GRASS_PAKET      = "FETCH_GET_GRASS_PAKET"
 export const FETCH_SUCCESS_GET_PROFILE  = "FETCH_SUCCESS_GET_PROFILE"
+export const FETCH_SUCCESS_GET_STVORKI  = "FETCH_SUCCESS_GET_STVORKI"
 
 
 export const fetchSuccessGetProfile = (typeProfileProps) =>(
     {
         type:FETCH_SUCCESS_GET_PROFILE,
         data:typeProfileProps
+    }
+)
+
+export const fetchSuccessGetStvorki = (listStvorki)=>(
+    {
+        type:FETCH_SUCCESS_GET_STVORKI,
+        data:listStvorki
     }
 )
 
