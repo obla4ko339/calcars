@@ -12,7 +12,55 @@ export const FETCH_GET_TYPE_PROFILE     = "FETCH_GET_TYPE_PROFILE"
 export const FETCH_GET_GRASS_PAKET      = "FETCH_GET_GRASS_PAKET"
 export const FETCH_SUCCESS_GET_PROFILE  = "FETCH_SUCCESS_GET_PROFILE"
 export const FETCH_SUCCESS_GET_STVORKI  = "FETCH_SUCCESS_GET_STVORKI"
+export const FETCH_GET_ARRAY_PRICE_GRASS= "FETCH_GET_ARRAY_PRICE_GRASS"
+export const FETCH_GET_INFO_STWORKA     = "FETCH_GET_INFO_STWORKA"
+export const GET_GRASS_SELECT_PAKET     = "GET_GRASS_SELECT_PAKET"
+export const GET_PRICE_PARAMS_WIN       = "GET_PRICE_PARAMS_WIN"    
+export const GET_PROFILE_ID             = "GET_PROFILE_ID"
+export const TOTAL_GET_DATA             = "TOTAL_GET_DATA"
 
+
+export const totalGetData = ()=>(
+    {
+        type:TOTAL_GET_DATA
+    }
+)
+
+export const getProfileId = (data)=>(
+    {
+        type:GET_PROFILE_ID,
+        data:data
+    }
+)
+
+
+export const getPriceParamsWin = (data) =>(
+    {
+        type:GET_PRICE_PARAMS_WIN,
+        data:data
+    }
+)
+
+export const getGrassSelectPaket = (data)=>(
+    {
+        type:GET_GRASS_SELECT_PAKET,
+        data:data
+    }
+)
+
+export const fetchGetInfoStworka = (listStworka)=>(
+    {
+        type:FETCH_GET_INFO_STWORKA,
+        data:listStworka
+    }
+)
+
+export const fetchGetArrayPriceGrass = (listPriceGrass)=>(
+    {
+        type:FETCH_GET_ARRAY_PRICE_GRASS,
+        data:listPriceGrass 
+    }
+)
 
 export const fetchSuccessGetProfile = (typeProfileProps) =>(
     {

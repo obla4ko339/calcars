@@ -6,8 +6,9 @@ export default function getStvorki(state=null, action){
         case FETCH_SUCCESS_GET_STVORKI:
             
             return {
-                ...state, ...{stvorki:action.data}
+                ...state, ...{stvorki:action.data}, ...{selectStworka:"0"}
             }
+       
         default:
             return state
     }

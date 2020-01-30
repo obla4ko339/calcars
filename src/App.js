@@ -29,7 +29,7 @@ import './components/Sizewind/style.css'
       totalPrice:0,
       dopOptciiState:0
     }
-
+    console.log("Constructor")
   }
 
   totalPrice(){
@@ -59,12 +59,13 @@ import './components/Sizewind/style.css'
     }
     for(let i=0; i<dopprofileId.length; i++){
       dopprofileId[i].checked = false
-    }
+    } 
     return index;
   }
 
   
-
+      
+      
 
     componentWillMount(){
       const {fetchListSuccessFunc} = this.props
@@ -75,10 +76,20 @@ import './components/Sizewind/style.css'
       this.props.fetchGetGrassPaketHolder()
       this.props.fetchSuccessGetProfileFunc()
       this.props.fetchSuccessGetStvorkiFunc()
+      this.props.fetchGetArrayPriceGrassFunc()
+      
+     
     }
 
     onHandleStvorki(data){
+      this.props.fetchGetInfoStworkaFunc(data.currentTarget.dataset.id) 
+      this.props.totalGetDataFunc()
+    }
+
+    handleGrassPoket(data){
       console.log(data.currentTarget)
+      this.props.getGrassSelectPaketFunc(data.currentTarget.dataset.id)
+      this.props.totalGetDataFunc()
     }
 
   render(){
@@ -86,8 +97,9 @@ import './components/Sizewind/style.css'
     if(!this.props.dopElement) return false
     if(!this.props.profile) return false
     if(!this.props.listGrass) return false
-    if(!this.props.getStvorki.stvorki) return false
-   
+    if(!this.props.getStvorki) return false
+    if(!this.props.id) return false 
+    if(!this.props.typeProfileProps) return false
     
     
     
@@ -139,8 +151,8 @@ import './components/Sizewind/style.css'
                   Тип профиль
                 </div>
                   {
-                    this.props.profile.profile[this.props.id ? this.props.id : 0].map((item, index)=>(
-                      <div key={item.id}>
+                    this.props.profile.profile[this.props.id].map((item, index)=>(
+                      <div key={index}>
                       <Typeprofile 
                       idProfile={item.idProfile} 
                       nameForm="typeProfile"  
@@ -163,16 +175,17 @@ import './components/Sizewind/style.css'
                     </div>
                     {
                       //console.log(this.props.typeProfileProps === undefined ? 0 : this.props.typeProfileProps.id) 
-                      console.log(this.props.listGrass.listGrass)
+                      //console.log(this.props.listGrass.listGrass)
                     }
                  
                     {
-                      this.props.listGrass.listGrass[this.props.typeProfileProps === undefined ? 0 : this.props.typeProfileProps.id].map((item, index)=>(
+                      this.props.listGrass.listGrass[this.props.typeProfileProps.id].map((item, index)=>(
                         <div key={index}>
                         <Paket 
+                        dataid={item.id}
                         idProfile={item.idProfile}    
                         namePfile={item.namePfile}
-    
+                        handleGrassPoket={this.handleGrassPoket.bind(this)}  
                         />
                         </div>
                       ))
@@ -187,7 +200,7 @@ import './components/Sizewind/style.css'
                     </div>
 
                     {
-                        console.log(this.props.getStvorki)
+                        //console.log(this.props.grassPrice.grassPrice)
                     }
                     {
                      

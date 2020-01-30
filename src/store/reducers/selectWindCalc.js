@@ -7,7 +7,8 @@ import {SET_WINDOW,
         FETCH_SET_WIND, 
         FETCH_SET_TYPE_PROFILE, 
         FETCH_SET_DOP_OPTCII, 
-        FETCH_SUCCESS_GET_PROFILE} from '../action'
+        FETCH_SUCCESS_GET_PROFILE,
+        GET_PRICE_PARAMS_WIN} from '../action'
 import {listWindows} from '../../components/data/list'
 import {listprofile} from '../../components/data/typeprofiledata'
 import {dopList} from '../../components/data/dopList'
@@ -36,8 +37,9 @@ export default function selectWindCalc(state=listWindows[0], action){
         case FETCH_LIST_SUCCESS:
             
             return {
-                ...state, ...action.data[0], ...{typeProfileProps:{id:"0"}}
+                ...state, ...action.data[0], ...{typeProfileProps:{id:"0"}}, ...{paramsWinPrice:0}
             }
+        
         case FETCH_SUCCESS_GET_PROFILE:
             return {
                 ...state, ...{typeProfileProps:{...action.data[0][0]}}

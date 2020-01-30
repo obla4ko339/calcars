@@ -13,7 +13,13 @@ import {setWindow,
         fetchGetTypeProfile, 
         fetchGetGrassPaket,
         fetchSuccessGetProfile,
-        fetchSuccessGetStvorki
+        fetchSuccessGetStvorki,
+        fetchGetArrayPriceGrass,
+        fetchGetInfoStworka,
+        getGrassSelectPaket,
+        getPriceParamsWin,
+        getProfileId,
+        totalGetData
     } from '../store/action'
 
 
@@ -40,8 +46,12 @@ const mapStateToProps = (state)=>(
         profile:state.getProfile,
 
         listGrass:state.getGrassPaket,
+        grassPrice:state.getGrassPaket,
+        selectGrass:state.getGrassPaket,
 
-        getStvorki:state.getStvorki
+        getStvorki:state.getStvorki,
+        stvorkaId:state.getStvorki,
+
 
 
     }
@@ -68,7 +78,7 @@ const mapDispatchToProps = (dispatch)=>({
         fetch("http://v339.ru/listWindows.php")
         .then(response=>{return response.json()})
         .then(data=>{
-
+            
             dispatch(fetchSetWind(data[idWin]))
         })
     },
@@ -76,7 +86,7 @@ const mapDispatchToProps = (dispatch)=>({
         fetch("http://v339.ru/typeProfile.php")
         .then(response=>{return response.json()})
         .then(data=>{
-          
+            dispatch(getProfileId(typeProfile))
             dispatch(fetchSetTypeProfile(data, typeProfile))
         })
     },
@@ -119,6 +129,29 @@ const mapDispatchToProps = (dispatch)=>({
         .then(data=>{
          
             dispatch(fetchSuccessGetStvorki(data))
+        }) 
+    },
+    fetchGetInfoStworkaFunc:(id)=>{
+        dispatch(fetchGetInfoStworka(id))
+    },
+    getGrassSelectPaketFunc:(id)=>{
+        dispatch(getGrassSelectPaket(id))
+    },
+    getPriceParamsWinFunc:(id)=>{
+       dispatch(getPriceParamsWin(id))
+    },
+    getProfileIdFunc:(id)=>{
+        dispatch(getProfileId(id))
+    },
+    totalGetDataFunc:()=>{
+        dispatch(totalGetData())
+    },
+    fetchGetArrayPriceGrassFunc:()=>{
+        fetch("http://v339.ru/grassPokket.php")
+        .then(response=>{return response.json()})
+        .then(data=>{
+         
+            dispatch(fetchGetArrayPriceGrass(data))
         }) 
     },
     hadleWindow:(wind)=>{
