@@ -60,6 +60,10 @@ import './components/Sizewind/style.css'
     for(let i=0; i<dopprofileId.length; i++){
       dopprofileId[i].checked = false
     } 
+    this.props.getTypeWinFunc(index)
+    this.props.totalGetDataFunc()
+    
+
     return index;
   }
 
@@ -90,6 +94,12 @@ import './components/Sizewind/style.css'
       console.log(data.currentTarget)
       this.props.getGrassSelectPaketFunc(data.currentTarget.dataset.id)
       this.props.totalGetDataFunc()
+    }
+
+    handleSetTypeProfile(data){
+      this.props.fetchSetTypeProfileFunc(data)
+      this.props.getProfileIdFunc(data)
+      this.props.totalGetDataFunc() 
     }
 
   render(){
@@ -156,11 +166,13 @@ import './components/Sizewind/style.css'
                       <Typeprofile 
                       idProfile={item.idProfile} 
                       nameForm="typeProfile"  
-                      
+                      checkDefault = {item.checkDefault}
                       index={item.id}
                       nameProfile={item.namePfile}
-                      handleSetTypeProfile={this.props.handleSetTypeProfile}
-                      fetchSetTypeProfileFunc ={this.props.fetchSetTypeProfileFunc}
+                      //handleSetTypeProfile={this.props.handleSetTypeProfile}
+                      handleSetTypeProfile={this.handleSetTypeProfile.bind(this)}
+                      //fetchSetTypeProfileFunc = {this.props.fetchSetTypeProfileFunc}
+                      fetchSetTypeProfileFunc = {this.handleSetTypeProfile.bind(this)}
                       key={item.id}
                       />
                       </div>
@@ -183,6 +195,7 @@ import './components/Sizewind/style.css'
                         <div key={index}>
                         <Paket 
                         dataid={item.id}
+                        checkDefault={item.checkDefault}
                         idProfile={item.idProfile}    
                         namePfile={item.namePfile}
                         handleGrassPoket={this.handleGrassPoket.bind(this)}  
@@ -206,7 +219,7 @@ import './components/Sizewind/style.css'
                      
                       this.props.getStvorki.stvorki.map((item, index)=>(
                         <div>
-                                <Stvorki idStvorki={item.idProfile} idSt={item.id} nameStvorki={item.namePfile} onHandleStvorki={this.onHandleStvorki.bind(this)} />
+                                <Stvorki idStvorki={item.idProfile} idSt={item.id} nameStvorki={item.namePfile} checkDefault={item.checkDefault} onHandleStvorki={this.onHandleStvorki.bind(this)} />
                         </div> 
                       ))
                      

@@ -8,7 +8,7 @@ const Stvorki = (props) =>{
         <div>
             <div className="listGrasPoket">
             <div>
-                <input type="radio" name="listStvorki" id={props.idStvorki} value={props.nameStvorki} data-id={props.idSt} onChange={(e)=>props.onHandleStvorki(e)} />
+                <input type="radio" name="listStvorki" id={props.idStvorki} value={props.nameStvorki} defaultChecked={props.checkDefault} data-id={props.idSt} onChange={(e)=>props.onHandleStvorki(e)} />
                 <label htmlFor={props.idStvorki}>{props.nameStvorki}</label>
             </div>
             </div>

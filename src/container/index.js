@@ -19,7 +19,8 @@ import {setWindow,
         getGrassSelectPaket,
         getPriceParamsWin,
         getProfileId,
-        totalGetData
+        totalGetData,
+        getTypeWin
     } from '../store/action'
 
 
@@ -86,7 +87,7 @@ const mapDispatchToProps = (dispatch)=>({
         fetch("http://v339.ru/typeProfile.php")
         .then(response=>{return response.json()})
         .then(data=>{
-            dispatch(getProfileId(typeProfile))
+            //dispatch(getProfileId(typeProfile))
             dispatch(fetchSetTypeProfile(data, typeProfile))
         })
     },
@@ -145,6 +146,9 @@ const mapDispatchToProps = (dispatch)=>({
     },
     totalGetDataFunc:()=>{
         dispatch(totalGetData())
+    },
+    getTypeWinFunc:(data)=>{
+        dispatch(getTypeWin(data))
     },
     fetchGetArrayPriceGrassFunc:()=>{
         fetch("http://v339.ru/grassPokket.php")

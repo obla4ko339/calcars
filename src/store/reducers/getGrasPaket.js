@@ -1,10 +1,11 @@
-import {FETCH_GET_GRASS_PAKET, FETCH_GET_ARRAY_PRICE_GRASS, GET_GRASS_SELECT_PAKET, GET_PRICE_PARAMS_WIN,FETCH_GET_INFO_STWORKA, GET_PROFILE_ID, TOTAL_GET_DATA} from '../action'
+import {FETCH_GET_GRASS_PAKET, FETCH_GET_ARRAY_PRICE_GRASS, GET_GRASS_SELECT_PAKET, GET_PRICE_PARAMS_WIN,FETCH_GET_INFO_STWORKA, GET_PROFILE_ID, TOTAL_GET_DATA,GET_TYPE_WIN} from '../action'
 
 const intialStateForGrass = {
     selectWin:"0",
     selectGrass:"0",
     selectStworka:"0",
-    selectProfile:"0"
+    selectProfile:"0",
+    priceService:"0"
 }
 
 function getGrassPaket(state=intialStateForGrass, action){
@@ -36,6 +37,10 @@ function getGrassPaket(state=intialStateForGrass, action){
           
             return{
                 ...state, ...{selectProfile:action.data}
+            }
+        case GET_TYPE_WIN:
+            return{
+                ...state, ...{selectWin:action.data}
             }   
         case TOTAL_GET_DATA:
                 console.log(state)
@@ -45,11 +50,11 @@ function getGrassPaket(state=intialStateForGrass, action){
                 console.log(state.selectGrass)
                 console.log(state.grassPrice)
           
-                let totalData = state.grassPrice[state.selectWin][state.selectProfile][state.selectStworka].steklopoket[state.selectGrass]
+                let totalData = state.grassPrice[state.selectWin][state.selectProfile][state.selectStworka].steklopoket[state.selectGrass].pricedef
                 console.log(totalData)
                 
                 return{
-                    ...state
+                    ...state, priceService:totalData
                 }
            
             
