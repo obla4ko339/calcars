@@ -17,9 +17,11 @@ function getGrassPaket(state=intialStateForGrass, action){
                 ...state, ...{listGrass:{...action.data}}
             }
         case FETCH_GET_ARRAY_PRICE_GRASS:
+              
+               let defaultPrice = action.data[state.selectWin][state.selectProfile][state.selectStworka].steklopoket[state.selectGrass].pricedef
                
             return {
-                ...state, ...{grassPrice:action.data}
+                ...state, ...{grassPrice:action.data}, ...{priceService:defaultPrice}
             }
         case GET_GRASS_SELECT_PAKET:
             return {
@@ -43,15 +45,10 @@ function getGrassPaket(state=intialStateForGrass, action){
                 ...state, ...{selectWin:action.data}
             }   
         case TOTAL_GET_DATA:
-                console.log(state)
-                console.log(state.selectWin)
-                console.log(state.selectProfile)
-                console.log(state.selectStworka)
-                console.log(state.selectGrass)
-                console.log(state.grassPrice)
+              
           
                 let totalData = state.grassPrice[state.selectWin][state.selectProfile][state.selectStworka].steklopoket[state.selectGrass].pricedef
-                console.log(totalData)
+               
                 
                 return{
                     ...state, priceService:totalData

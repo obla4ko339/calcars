@@ -46,7 +46,7 @@ function fetchAll(fetchList){
     .then(response=>{return response.json()})
     .then(data=>{
         fetchList(data)   
-        console.log(data) 
+       
         
     })
 }
@@ -58,7 +58,7 @@ function fetchList(list){
 
 fetchAll(fetchList)
 setTimeout(function(){
-    console.log(obj) 
+   
 }, 3000)
    
 

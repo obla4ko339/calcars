@@ -29,7 +29,7 @@ import './components/Sizewind/style.css'
       totalPrice:0,
       dopOptciiState:0
     }
-    console.log("Constructor")
+  
   }
 
   totalPrice(){
@@ -41,8 +41,8 @@ import './components/Sizewind/style.css'
     for(let priceDop in dopForWind){
       priceForWind += parseInt(dopForWind[priceDop])
     }
-   
-    let result = parseInt(priceWindow) + parseInt(priceTypeProfile) + parseInt(priceForWind)
+    
+    let result = parseInt(priceForWind) + parseInt(this.props.priceParams.priceService)
     return result
   }
 
@@ -91,7 +91,7 @@ import './components/Sizewind/style.css'
     }
 
     handleGrassPoket(data){
-      console.log(data.currentTarget)
+      
       this.props.getGrassSelectPaketFunc(data.currentTarget.dataset.id)
       this.props.totalGetDataFunc()
     }
@@ -102,6 +102,12 @@ import './components/Sizewind/style.css'
       this.props.totalGetDataFunc() 
     }
 
+
+    handleTypeMontag(e){
+      let idMntag = e.currentTarget.dataset.montag 
+      this.props.getIdForMontagFunc(idMntag)
+    }
+
   render(){
     if(!listWindows) return false
     if(!this.props.dopElement) return false
@@ -110,6 +116,8 @@ import './components/Sizewind/style.css'
     if(!this.props.getStvorki) return false
     if(!this.props.id) return false 
     if(!this.props.typeProfileProps) return false
+    //if(!this.props.priceParams) return false 
+    
     
     
     
@@ -185,12 +193,11 @@ import './components/Sizewind/style.css'
                     <div className="titleCalc"> 
                       Стеклопакет
                     </div>
-                    {
-                      //console.log(this.props.typeProfileProps === undefined ? 0 : this.props.typeProfileProps.id) 
-                      //console.log(this.props.listGrass.listGrass)
-                    }
+                    
+                   
                  
                     {
+
                       this.props.listGrass.listGrass[this.props.typeProfileProps.id].map((item, index)=>(
                         <div key={index}>
                         <Paket 
@@ -218,7 +225,7 @@ import './components/Sizewind/style.css'
                     {
                      
                       this.props.getStvorki.stvorki.map((item, index)=>(
-                        <div>
+                        <div key={index}>
                                 <Stvorki idStvorki={item.idProfile} idSt={item.id} nameStvorki={item.namePfile} checkDefault={item.checkDefault} onHandleStvorki={this.onHandleStvorki.bind(this)} />
                         </div> 
                       ))
@@ -236,9 +243,19 @@ import './components/Sizewind/style.css'
                   <div className="titleCalc"> 
                       Дополнительно
                     </div>
+
+                     <div className="container_montah_polls">
+                        <div className="pollPanel" data-montag="0" className={this.props.idMontag == "0" ? "activeMontag" : ""} onClick={(e)=>{this.handleTypeMontag(e)}}>
+                        С монтажом в панели
+                        </div>
+                        <div className="pollKirp" data-montag="1" className={this.props.idMontag == "1" ? "activeMontag" : ""} onClick={(e)=>{this.handleTypeMontag(e)}}>
+                        С монтажом в кирпиче
+                        </div>
+                      </div> 
+
                     <div className="dopService"> 
                   {
-                    this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0].map((item, index)=>(
+                    this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0][this.props.idMontag].map((item, index)=>(
                       <div key={item.id}>
                       
                         <Dopprofile nameForm={item.nameForm}   valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} fetchSetDopOptciiFunc={this.props.fetchSetDopOptciiFunc} />

@@ -20,7 +20,8 @@ import {setWindow,
         getPriceParamsWin,
         getProfileId,
         totalGetData,
-        getTypeWin
+        getTypeWin,
+        getIdForMontag
     } from '../store/action'
 
 
@@ -49,9 +50,12 @@ const mapStateToProps = (state)=>(
         listGrass:state.getGrassPaket,
         grassPrice:state.getGrassPaket,
         selectGrass:state.getGrassPaket,
+        priceParams:state.getGrassPaket,
 
         getStvorki:state.getStvorki,
         stvorkaId:state.getStvorki,
+
+        idMontag:state.selectWindCalc.idMontag
 
 
 
@@ -95,6 +99,7 @@ const mapDispatchToProps = (dispatch)=>({
         fetch("http://v339.ru/dopList.php")
         .then(response=>{return response.json()})
         .then(data=>{
+            
            
             dispatch(fetchSetDopOptcii(data, dopOptciiId))
         })
@@ -131,6 +136,9 @@ const mapDispatchToProps = (dispatch)=>({
          
             dispatch(fetchSuccessGetStvorki(data))
         }) 
+    },
+    getIdForMontagFunc:(data)=>{
+        dispatch(getIdForMontag(data))
     },
     fetchGetInfoStworkaFunc:(id)=>{
         dispatch(fetchGetInfoStworka(id))

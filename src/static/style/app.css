@@ -9,3 +9,25 @@
     margin: 15px 0px 3px 0px;
     font-weight: 700;
 }
+.container_montah_polls {
+    display: flex;
+    justify-content: left;
+}
+
+.container_montah_polls>div {
+    border: 1px solid #eee;
+    background: #eee;
+    padding: 5px 10px;
+    margin: 10px 10px;
+    cursor: pointer;
+}
+.activeMontag{
+    border: 1px solid #eee !important;
+    background: #fb313b !important;
+    padding: 5px 10px !important;
+    margin: 10px 10px !important;
+    cursor: pointer !important;
+    color: #fff !important;
+    border-radius: 5px !important;
+    transition: all 0.5s;
+}

@@ -19,6 +19,14 @@ export const GET_PRICE_PARAMS_WIN       = "GET_PRICE_PARAMS_WIN"
 export const GET_PROFILE_ID             = "GET_PROFILE_ID"
 export const TOTAL_GET_DATA             = "TOTAL_GET_DATA"
 export const GET_TYPE_WIN               = "GET_TYPE_WIN"
+export const GET_ID_FOR_MONTAG          = "GET_ID_FOR_MONTAG"  
+
+export const getIdForMontag = (data) =>(
+    {
+        type:GET_ID_FOR_MONTAG,
+        data:data
+    }
+)
 
 export const getTypeWin = (data)=>(
     {

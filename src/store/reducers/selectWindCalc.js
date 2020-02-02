@@ -8,6 +8,7 @@ import {SET_WINDOW,
         FETCH_SET_TYPE_PROFILE, 
         FETCH_SET_DOP_OPTCII, 
         FETCH_SUCCESS_GET_PROFILE,
+        GET_ID_FOR_MONTAG,
         GET_PRICE_PARAMS_WIN} from '../action'
 import {listWindows} from '../../components/data/list'
 import {listprofile} from '../../components/data/typeprofiledata'
@@ -37,7 +38,7 @@ export default function selectWindCalc(state=listWindows[0], action){
         case FETCH_LIST_SUCCESS:
             
             return {
-                ...state, ...action.data[0], ...{typeProfileProps:{id:"0"}}, ...{paramsWinPrice:0}
+                ...state, ...action.data[0], ...{typeProfileProps:{id:"0"}}, ...{paramsWinPrice:0}, ...{idMontag:0}
             }
         
         case FETCH_SUCCESS_GET_PROFILE:
@@ -46,6 +47,7 @@ export default function selectWindCalc(state=listWindows[0], action){
             }
 
         case FETCH_SET_WIND:
+               
                 for(let prof in  state.typeProfileProps){
                     state.typeProfileProps[prof] = 0
                 }
@@ -53,9 +55,12 @@ export default function selectWindCalc(state=listWindows[0], action){
                 if(state.price){
                     for(let dop in state.price){
                         state.price[dop] = 0
+                       //delete state.price 
+                       listDopObj = {}
+                       //delete state.price[dop]
                     }
                 }
-
+                
             return {...state, ...action.data}
 
         case FETCH_SET_TYPE_PROFILE:
@@ -66,13 +71,17 @@ export default function selectWindCalc(state=listWindows[0], action){
 
         case FETCH_SET_DOP_OPTCII:
                 
-               
+            
                
                 if(action.id.stateDop){
-                    listDopObj[action.data[state.id][action.id.index].nameForm] = action.data[state.id][action.id.index].pricedef
+                    listDopObj[action.data[state.id][state.idMontag][action.id.index].nameForm] = action.data[state.id][state.idMontag][action.id.index].pricedef
                 }else{
-                    listDopObj[action.data[state.id][action.id.index].nameForm] = 0
+                    listDopObj[action.data[state.id][state.idMontag][action.id.index].nameForm] = 0
+                    
                 }
+                
+
+               
             
         return {
             ...state, ...{price:{...listDopObj}}
@@ -104,17 +113,21 @@ export default function selectWindCalc(state=listWindows[0], action){
                 ...state, ...{typeProfileProps:{...listprofile[state.id][action.data]}}
                 
             }
-        case SET_DOP_OPTCII:
-               
-                if(action.data.stateDop){
-                    listDopObj[dopList[state.id][action.data.index].nameForm] = dopList[state.id][action.data.index].pricedef
-                }else{
-                    listDopObj[dopList[state.id][action.data.index].nameForm] = 0
-                }
+        // case SET_DOP_OPTCII:
+             
+        //         if(action.data.stateDop){
+        //             listDopObj[dopList[state.id][action.data.index].nameForm] = dopList[state.id][action.data.index].pricedef
+        //         }else{
+        //             listDopObj[dopList[state.id][action.data.index].nameForm] = 0
+        //         }
             
             
+        //     return{
+        //         ...state, ...{price:{...listDopObj}}
+        //     }
+        case GET_ID_FOR_MONTAG:
             return{
-                ...state, ...{price:{...listDopObj}}
+                ...state, idMontag:action.data
             }
         default:
             return state;
