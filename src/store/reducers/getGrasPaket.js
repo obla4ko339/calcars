@@ -36,20 +36,20 @@ function getGrassPaket(state=intialStateForGrass, action){
                     ...state, ...{selectStworka:action.data}
                 } 
         case GET_PROFILE_ID:
-          
+                console.log(action.data)
             return{
-                ...state, ...{selectProfile:action.data}
+                ...state, ...{selectProfile:action.data}, ...{selectGrass:"0"}
             }
         case GET_TYPE_WIN:
             return{
                 ...state, ...{selectWin:action.data}
             }   
         case TOTAL_GET_DATA:
-              
+                
           
                 let totalData = state.grassPrice[state.selectWin][state.selectProfile][state.selectStworka].steklopoket[state.selectGrass].pricedef
                
-                
+                 
                 return{
                     ...state, priceService:totalData
                 }

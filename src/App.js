@@ -27,7 +27,8 @@ import './components/Sizewind/style.css'
     this.state = {
       indexImg:1, 
       totalPrice:0,
-      dopOptciiState:0
+      dopOptciiState:0,
+      profileId:0
     }
   
   }
@@ -86,6 +87,7 @@ import './components/Sizewind/style.css'
     }
 
     onHandleStvorki(data){
+     
       this.props.fetchGetInfoStworkaFunc(data.currentTarget.dataset.id) 
       this.props.totalGetDataFunc()
     }
@@ -100,6 +102,8 @@ import './components/Sizewind/style.css'
       this.props.fetchSetTypeProfileFunc(data)
       this.props.getProfileIdFunc(data)
       this.props.totalGetDataFunc() 
+      //this.state.profileId == 0 ? this.setState({profileId:1}) : this.setState({profileId:0})
+      this.setState({profileId:data})
     }
 
 
@@ -117,6 +121,7 @@ import './components/Sizewind/style.css'
     if(!this.props.id) return false 
     if(!this.props.typeProfileProps) return false
     //if(!this.props.priceParams) return false 
+    if(!this.props.listGrass.listGrass[this.state.profileId ? this.state.profileId : "0"]) return false
     
     
     
@@ -197,8 +202,9 @@ import './components/Sizewind/style.css'
                    
                  
                     {
-
-                      this.props.listGrass.listGrass[this.props.typeProfileProps.id].map((item, index)=>(
+                      // error profileId
+                      //this.props.listGrass.listGrass[this.props.typeProfileProps.id].map((item, index)=>(
+                        this.props.listGrass.listGrass[this.state.profileId].map((item, index)=>(
                         <div key={index}>
                         <Paket 
                         dataid={item.id}
@@ -254,8 +260,9 @@ import './components/Sizewind/style.css'
                       </div> 
 
                     <div className="dopService"> 
+                    
                   {
-                    this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0][this.props.idMontag].map((item, index)=>(
+                    this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0][this.props.idMontag ? this.props.idMontag : 0].map((item, index)=>(
                       <div key={item.id}>
                       
                         <Dopprofile nameForm={item.nameForm}   valueInput={item.name} idForm={item.name} index={item.id}  priceDop={item.pricedef} fetchSetDopOptciiFunc={this.props.fetchSetDopOptciiFunc} />
