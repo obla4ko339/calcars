@@ -9,8 +9,10 @@ export default function Sizewind(props){
             <div className="titleCalc">
                 {props.typeSize}
             </div>
-            <div>
-                <input type="text" name={props.nameForm} id={props.idForm} value={props.sizeWind} placeholder={props.sizeWind}  />
+            <div className="blockTotalStyle">
+            <div className="sizeWH">
+                <div name={props.nameForm} id={props.idForm}  placeholder={props.sizeWind}  >{props.sizeWind} <span className="mmSize">мм</span> </div>
+            </div>
             </div>
             
         </div>

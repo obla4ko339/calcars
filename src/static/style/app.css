@@ -31,3 +31,82 @@
     border-radius: 5px !important;
     transition: all 0.5s;
 }
+input#widthWind {
+    border: 0px;
+    font-size: 17px;
+}
+input#heightWind {
+    border: 0px;
+    font-size: 17px;
+}
+.sizeWH {
+    font-size: 18px;
+}
+.price-number {
+    font-size: 30px;
+}
+.blockTotalStyle {
+    border: 1px solid #d0d0d0;
+    display: inline-block;
+    padding: 15px 30px 15px 10px;
+}
+.dopService .blockTotalStyle {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 380px;
+}
+.dopService .blockTotalStyle > div {
+    display: block;
+    max-width: 125px;
+    width: 100%;
+}
+.blockTotalStyle {
+    font-weight: 800;
+}
+.dop-profile {
+    text-align: left;
+}
+.container-icon-windows {
+    border: 1px solid #d0d0d0;
+    text-align: center;
+}
+.container-icon-windows {
+    border: 1px solid #d0d0d0;
+    text-align: center;
+    margin: 10px 0px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 5px;
+}
+.container-icon-windows:hover {
+    border: 1px solid #fb313b;
+}
+.main-img-scroll {
+    max-width: 480px;
+    width: 100%;
+}
+span.textSmolle {
+    font-size: 12px;
+    max-width: 270px;
+    display: inline-block;
+}
+.container_price_call {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btnCallBack {
+    border: 1px solid #eee;
+    background: #fb313b;
+    color: #fff;
+    font-weight: 300;
+    padding: 5px 15px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.btnCallBack:hover {
+    border: 1px solid #fb313b;
+    color: #000;
+    background: #fff;
+}

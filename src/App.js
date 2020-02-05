@@ -55,9 +55,9 @@ import './components/Sizewind/style.css'
     //this.props.hadleWindow(index);
     let dopprofileId = document.getElementsByClassName("dop-profile")
     let typeprofile = document.getElementsByClassName("type-profile")
-    for(let i=0; i<typeprofile.length; i++){
-      typeprofile[i].checked = false
-    }
+    // for(let i=0; i<typeprofile.length; i++){
+    //   typeprofile[i].checked = false
+    // }
     for(let i=0; i<dopprofileId.length; i++){
       dopprofileId[i].checked = false
     } 
@@ -110,6 +110,11 @@ import './components/Sizewind/style.css'
     handleTypeMontag(e){
       let idMntag = e.currentTarget.dataset.montag 
       this.props.getIdForMontagFunc(idMntag)
+      let dopprofileId = document.getElementsByClassName("dop-profile")
+        for(let i=0; i<dopprofileId.length; i++){
+          dopprofileId[i].checked = false
+        } 
+
     }
 
   render(){
@@ -143,9 +148,7 @@ import './components/Sizewind/style.css'
                 </div>
 
                 <div className="main-img-scroll"> 
-                  <div className="scroll-vertical">
-                    <Sliderrange minVal="500" maxVal="2400" defVal="1500" hadleSetWidth={this.props.handleSetHeight}/>
-                  </div>    
+                      
 
                   <div className="img-with-scroll">
                   
@@ -157,9 +160,7 @@ import './components/Sizewind/style.css'
                   }
                   </div>
 
-                  <div>
-                   <Sliderrange minVal="1000" maxVal="1600" defVal="1330" hadleSetWidth={this.props.hadleSetWidth} />
-                  </div>
+                
                                     
                   </div>
 
@@ -173,24 +174,26 @@ import './components/Sizewind/style.css'
                   <div className="titleCalc"> 
                   Тип профиль
                 </div>
-                  {
-                    this.props.profile.profile[this.props.id].map((item, index)=>(
-                      <div key={index}>
-                      <Typeprofile 
-                      idProfile={item.idProfile} 
-                      nameForm="typeProfile"  
-                      checkDefault = {item.checkDefault}
-                      index={item.id}
-                      nameProfile={item.namePfile}
-                      //handleSetTypeProfile={this.props.handleSetTypeProfile}
-                      handleSetTypeProfile={this.handleSetTypeProfile.bind(this)}
-                      //fetchSetTypeProfileFunc = {this.props.fetchSetTypeProfileFunc}
-                      fetchSetTypeProfileFunc = {this.handleSetTypeProfile.bind(this)}
-                      key={item.id}
-                      />
-                      </div>
-                    ))
-                  }
+                  <div className="blockTotalStyle">
+                    {
+                      this.props.profile.profile[this.props.id].map((item, index)=>(
+                        <div key={index}>
+                        <Typeprofile 
+                        idProfile={item.idProfile} 
+                        nameForm="typeProfile"  
+                        checkDefault = {item.checkDefault}
+                        index={item.id}
+                        nameProfile={item.namePfile}
+                        //handleSetTypeProfile={this.props.handleSetTypeProfile}
+                        handleSetTypeProfile={this.handleSetTypeProfile.bind(this)}
+                        //fetchSetTypeProfileFunc = {this.props.fetchSetTypeProfileFunc}
+                        fetchSetTypeProfileFunc = {this.handleSetTypeProfile.bind(this)}
+                        key={item.id}
+                        />
+                        </div>
+                      ))
+                    }
+                    </div>
                   </div>
 
 
@@ -200,7 +203,7 @@ import './components/Sizewind/style.css'
                     </div>
                     
                    
-                 
+                    <div className="blockTotalStyle">
                     {
                       // error profileId
                       //this.props.listGrass.listGrass[this.props.typeProfileProps.id].map((item, index)=>(
@@ -216,7 +219,7 @@ import './components/Sizewind/style.css'
                         </div>
                       ))
                     }
-
+                    </div>
                  
                   </div>
 
@@ -225,9 +228,7 @@ import './components/Sizewind/style.css'
                     Створка
                     </div>
 
-                    {
-                        //console.log(this.props.grassPrice.grassPrice)
-                    }
+                    <div className="blockTotalStyle">
                     {
                      
                       this.props.getStvorki.stvorki.map((item, index)=>(
@@ -237,6 +238,7 @@ import './components/Sizewind/style.css'
                       ))
                      
                     }
+                    </div>
                   </div>
 
 
@@ -260,7 +262,7 @@ import './components/Sizewind/style.css'
                       </div> 
 
                     <div className="dopService"> 
-                    
+                    <div className="blockTotalStyle">
                   {
                     this.props.dopElement.dopOptcii[this.props.id ? this.props.id : 0][this.props.idMontag ? this.props.idMontag : 0].map((item, index)=>(
                       <div key={item.id}>
@@ -269,7 +271,7 @@ import './components/Sizewind/style.css'
                       </div>
                     ))
                   }
-                   
+                  </div>
                   </div>
                   </div>
 
@@ -279,7 +281,7 @@ import './components/Sizewind/style.css'
                   <div className="titleCalc price-title">
                   Стоимость
                   
-                  </div>
+                  <div className="container_price_call">
                   <div className="price-number">
           
                   {
@@ -287,6 +289,16 @@ import './components/Sizewind/style.css'
                   }
                   ₽
                   </div>
+
+                  <div className="container_btnCallBack">
+                    <div className="btnCallBack">
+                      Заказать расчет
+                     </div>
+                  </div>
+                  </div>
+
+                  </div>
+                  <span className="textSmolle">Более подробно по стоимости и рассчетам Вас проконсультирует Менеджер компании "АРСПАСТ"</span>
                   </div>
 
                   </div>

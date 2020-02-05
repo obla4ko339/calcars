@@ -9,6 +9,7 @@ import {SET_WINDOW,
         FETCH_SET_DOP_OPTCII, 
         FETCH_SUCCESS_GET_PROFILE,
         GET_ID_FOR_MONTAG,
+        FETCH_GET_DOP_OPTCII,
         GET_PRICE_PARAMS_WIN} from '../action'
 import {listWindows} from '../../components/data/list'
 import {listprofile} from '../../components/data/typeprofiledata'
@@ -44,6 +45,10 @@ export default function selectWindCalc(state=listWindows[0], action){
         case FETCH_SUCCESS_GET_PROFILE:
             return {
                 ...state, ...{typeProfileProps:{...action.data[0][0]}}
+            }
+        case FETCH_GET_DOP_OPTCII:
+            return {
+                ...state, ...{dopOptcii:{...action.data}}
             }
 
         case FETCH_SET_WIND:
@@ -126,6 +131,18 @@ export default function selectWindCalc(state=listWindows[0], action){
         //         ...state, ...{price:{...listDopObj}}
         //     }
         case GET_ID_FOR_MONTAG:
+
+            if(state.price){
+                for(let dop in state.price){
+                    state.price[dop] = 0
+                   //delete state.price 
+                   listDopObj = {}
+                   //delete state.price[dop]
+                }
+            }
+            
+         
+
             return{
                 ...state, idMontag:action.data
             }
