@@ -10,6 +10,7 @@ import Sizewind from './components/Sizewind'
 import Bigwind from './components/Bigwind'
 import Paket from './components/Paket'
 import Stvorki from './components/Stvorki'
+import Feedback from './components/Feedback'
 import './static/style/app.css'
 import './components/Sliderrange/style.css'
 import './components/Typeprofile/style.css'
@@ -116,6 +117,24 @@ import './components/Sizewind/style.css'
         } 
 
     }
+
+
+    handleBtnProps(e, dataState){
+     
+      
+      fetch("http://v339.ru/jsonhandle/jsonhandle.php", {
+        method:"post",
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" 
+         },
+        body:"nameuser="+dataState.userName+"&userTelephone="+dataState.userTelephone+"&typeWin="+this.props.titlewind+"&typeProfile="+JSON.stringify(this.props.typeProfileProps)+"&price="+this.props.priceParams.priceService+"&typePols="+this.props.idMontag+"&dopsParams="+JSON.stringify(this.props.listDopParams)+"&getGrassPaket="+JSON.stringify(this.props.listGrass)
+         
+      })
+      .then((response)=> response.json())
+
+    }
+
+    
 
   render(){
     if(!listWindows) return false
@@ -291,9 +310,11 @@ import './components/Sizewind/style.css'
                   </div>
 
                   <div className="container_btnCallBack">
-                    <div className="btnCallBack">
-                      Заказать расчет
-                     </div>
+                    <Feedback handleBtnProps={this.handleBtnProps.bind(this)} />
+
+                   
+
+
                   </div>
                   </div>
 

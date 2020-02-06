@@ -43,6 +43,7 @@ const mapStateToProps = (state)=>(
         bigimg:state.selectWindCalc.bigimg,
         windowProps:state.selectWindCalc.windowProps,
         pricetotal:state.selectWindCalc,
+        listDopParams:state.selectWindCalc.price,
 
         dopElement:state.getDopOptcii,
         profile:state.getProfile,
