@@ -66,14 +66,14 @@ const mapStateToProps = (state)=>(
 
 const mapDispatchToProps = (dispatch)=>({
     fetchListSuccessFunc:()=>{
-        fetch("http://v339.ru/listWindows.php")
+        fetch("http://arsplast.ru/listWindows.php")
         .then(response=>{return response.json()})
         .then(data=>{
             dispatch(fetchListSuccess(data))
         })
     },
     fetchSuccessGetProfileFunc:()=>{
-        fetch("http://v339.ru/typeProfile.php")
+        fetch("http://arsplast.ru/typeProfile.php")
         .then(response=>{return response.json()})
         .then(data=>{
           
@@ -81,7 +81,7 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchSetWinFunc:(idWin)=>{
-        fetch("http://v339.ru/listWindows.php")
+        fetch("http://arsplast.ru/listWindows.php")
         .then(response=>{return response.json()})
         .then(data=>{
             
@@ -89,7 +89,7 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchSetTypeProfileFunc:(typeProfile)=>{
-        fetch("http://v339.ru/typeProfile.php")
+        fetch("http://arsplast.ru/typeProfile.php")
         .then(response=>{return response.json()})
         .then(data=>{
             //dispatch(getProfileId(typeProfile))
@@ -97,7 +97,7 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchSetDopOptciiFunc:(dopOptciiId)=>{
-        fetch("http://v339.ru/dopList.php")
+        fetch("http://arsplast.ru/dopList.php")
         .then(response=>{return response.json()})
         .then(data=>{
             
@@ -106,7 +106,7 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchGetDopOptciiFunc:()=>{
-        fetch("http://v339.ru/dopList.php")
+        fetch("http://arsplast.ru/dopList.php")
         .then(response=>{return response.json()})
         .then(data=>{
            
@@ -114,7 +114,7 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchGetProfile:()=>{
-        fetch("http://v339.ru/typeProfile.php")
+        fetch("http://arsplast.ru/typeProfile.php")
         .then(response=>{return response.json()})
         .then(data=>{
           
@@ -123,7 +123,7 @@ const mapDispatchToProps = (dispatch)=>({
         })
     },
     fetchGetGrassPaketHolder:()=>{
-        fetch("http://v339.ru/listGrass.php")
+        fetch("http://arsplast.ru/listGrass.php")
         .then(response=>{return response.json()})
         .then(data=>{
          
@@ -131,7 +131,7 @@ const mapDispatchToProps = (dispatch)=>({
         }) 
     },
     fetchSuccessGetStvorkiFunc:()=>{
-        fetch("http://v339.ru/listStvorki.php")
+        fetch("http://arsplast.ru/listStvorki.php")
         .then(response=>{return response.json()})
         .then(data=>{
          
@@ -160,7 +160,7 @@ const mapDispatchToProps = (dispatch)=>({
         dispatch(getTypeWin(data))
     },
     fetchGetArrayPriceGrassFunc:()=>{
-        fetch("http://v339.ru/grassPokket.php")
+        fetch("http://arsplast.ru/grassPokket.php")
         .then(response=>{return response.json()})
         .then(data=>{
          

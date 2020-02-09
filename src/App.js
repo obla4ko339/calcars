@@ -122,7 +122,7 @@ import './components/Sizewind/style.css'
     handleBtnProps(e, dataState){
      
       
-      fetch("http://v339.ru/jsonhandle/jsonhandle.php", {
+      fetch("http://arsplast.ru/jsonhandle/jsonhandle.php", {
         method:"post",
         headers: {
           "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" 
@@ -273,10 +273,10 @@ import './components/Sizewind/style.css'
 
                      <div className="container_montah_polls">
                         <div className="pollPanel" data-montag="0" className={this.props.idMontag == "0" ? "activeMontag" : ""} onClick={(e)=>{this.handleTypeMontag(e)}}>
-                        С монтажом в панели
+                        Монтаж в кирпичном доме
                         </div>
                         <div className="pollKirp" data-montag="1" className={this.props.idMontag == "1" ? "activeMontag" : ""} onClick={(e)=>{this.handleTypeMontag(e)}}>
-                        С монтажом в кирпиче
+                        Монтаж в панельном доме
                         </div>
                       </div> 
 

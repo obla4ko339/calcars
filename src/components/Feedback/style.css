@@ -30,7 +30,11 @@
     transition: all 0.5s;
     left: 50%;
     margin-left: -150px;
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    top: 50%;
+    max-height: 280px;
+    height: 100%;
+    margin-top: -140px;
 }
    
 .conainer_input {
