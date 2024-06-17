@@ -1,189 +1,202 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import App from '../App'
-import {setWindow, 
-        setWidth, 
-        setHeight, 
-        setTypeProfile, 
-        setDopOptcii, 
-        fetchListSuccess, 
-        fetchSetWind, 
-        fetchSetTypeProfile, 
-        fetchSetDopOptcii, 
-        fetchGetDopOptcii, 
-        fetchGetTypeProfile, 
-        fetchGetGrassPaket,
-        fetchSuccessGetProfile,
-        fetchSuccessGetStvorki,
-        fetchGetArrayPriceGrass,
-        fetchGetInfoStworka,
-        getGrassSelectPaket,
-        getPriceParamsWin,
-        getProfileId,
-        totalGetData,
-        getTypeWin,
-        getIdForMontag
-    } from '../store/action'
+
+
+import {
+    setWindow,
+    setWidth,
+    setHeight,
+    setTypeProfile,
+    setDopOptcii,
+    fetchListSuccess,
+    fetchSetWind,
+    fetchSetTypeProfile,
+    fetchSetDopOptcii,
+    fetchGetDopOptcii,
+    fetchGetTypeProfile,
+    fetchGetGrassPaket,
+    fetchSuccessGetProfile,
+    fetchSuccessGetStvorki,
+    fetchGetArrayPriceGrass,
+    fetchGetInfoStworka,
+    getGrassSelectPaket,
+    getPriceParamsWin,
+    getProfileId,
+    totalGetData,
+    getTypeWin,
+    getIdForMontag,
+    setTypeStworka,
+    getDataWin
+} from '../store/action'
+import Bigwind from '../components/Bigwind'
 
 
 
-const mapStateToProps = (state)=>(
+const mapStateToProps = (state) => (
     {
-        windowProps:state.selectWindCalc.windowProps,
-        widthProps:state.selectWindCalc.widthProps,
-        heightProps:state.selectWindCalc.heightProps,
-        typeProfileProps:state.selectWindCalc.typeProfileProps,
-        dopOptciiProps:state.selectWindCalc.dopOptciiProps,
+        windowProps: state.selectWindCalc.windowProps,
+        widthProps: state.selectWindCalc.widthProps,
+        heightProps: state.selectWindCalc.heightProps,
+        typeProfileProps: state.selectWindCalc.typeProfileProps,
+        dopOptciiProps: state.selectWindCalc.dopOptciiProps,
 
-        id:state.selectWindCalc.id,
-        pricedef:state.selectWindCalc.pricedef,
-        widthdef:state.selectWindCalc.widthdef,
-        heightdef:state.selectWindCalc.heightdef,
-        titlewind:state.selectWindCalc.titlewind,
-        imgwindows:state.selectWindCalc.imgwindows,
-        bigimg:state.selectWindCalc.bigimg,
-        windowProps:state.selectWindCalc.windowProps,
-        pricetotal:state.selectWindCalc,
-        listDopParams:state.selectWindCalc.price,
+        id: state.selectWindCalc.id,
+        pricedef: state.selectWindCalc.pricedef,
+        widthdef: state.selectWindCalc.widthdef,
+        heightdef: state.selectWindCalc.heightdef,
+        titlewind: state.selectWindCalc.titlewind,
+        imgwindows: state.selectWindCalc.imgwindows,
+        bigimg: state.selectWindCalc.bigimg,
+        windowProps: state.selectWindCalc.windowProps,
+        pricetotal: state.selectWindCalc,
+        listDopParams: state.selectWindCalc.price,
 
-        dopElement:state.getDopOptcii,
-        profile:state.getProfile,
+        dopElement: state.getDopOptcii,
+        profile: state.getProfile,
 
-        listGrass:state.getGrassPaket,
-        grassPrice:state.getGrassPaket,
-        selectGrass:state.getGrassPaket,
-        priceParams:state.getGrassPaket,
+        listGrass: state.getGrassPaket,
+        grassPrice: state.getGrassPaket,
+        selectGrass: state.getGrassPaket,
+        priceParams: state.getGrassPaket,
 
-        getStvorki:state.getStvorki,
-        stvorkaId:state.getStvorki,
+        getStvorki: state.getStvorki,
+        stvorkaId: state.getStvorki,
 
-        idMontag:state.selectWindCalc.idMontag
+        idMontag: state.selectWindCalc.idMontag
 
 
 
     }
-  )
+)
 
 
-const mapDispatchToProps = (dispatch)=>({
-    fetchListSuccessFunc:()=>{
-        fetch("http://arsplast.ru/listWindows.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-            dispatch(fetchListSuccess(data))
-        })
+const mapDispatchToProps = (dispatch) => ({
+    fetchListSuccessFunc: () => {
+        fetch("https://greenpel.ru/listWindows.php")
+            .then(response => { return response.json() })
+            .then(data => {
+                dispatch(fetchListSuccess(data))
+            })
     },
-    fetchSuccessGetProfileFunc:()=>{
-        fetch("http://arsplast.ru/typeProfile.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-          
-            dispatch(fetchSuccessGetProfile(data))
-        })
+    fetchSuccessGetProfileFunc: () => {
+        fetch("https://greenpel.ru/typeProfile.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchSuccessGetProfile(data))
+            })
     },
-    fetchSetWinFunc:(idWin)=>{
-        fetch("http://arsplast.ru/listWindows.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-            
-            dispatch(fetchSetWind(data[idWin]))
-        })
+    fetchSetWinFunc: (idWin) => {
+        fetch("https://greenpel.ru/listWindows.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchSetWind(data[idWin]))
+            })
     },
-    fetchSetTypeProfileFunc:(typeProfile)=>{
-        fetch("http://arsplast.ru/typeProfile.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-            //dispatch(getProfileId(typeProfile))
-            dispatch(fetchSetTypeProfile(data, typeProfile))
-        })
+    fetchSetTypeProfileFunc: (typeProfile) => {
+        fetch("https://greenpel.ru/typeProfile.php")
+            .then(response => { return response.json() })
+            .then(data => {
+                //dispatch(getProfileId(typeProfile))
+                dispatch(fetchSetTypeProfile(data, typeProfile))
+            })
     },
-    fetchSetDopOptciiFunc:(dopOptciiId)=>{
-        fetch("http://arsplast.ru/dopList.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-            
-           
-            dispatch(fetchSetDopOptcii(data, dopOptciiId))
-        })
+    fetchSetDopOptciiFunc: (dopOptciiId) => {
+        fetch("https://greenpel.ru/dopList.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+
+                dispatch(fetchSetDopOptcii(data, dopOptciiId))
+            })
     },
-    fetchGetDopOptciiFunc:()=>{
-        fetch("http://arsplast.ru/dopList.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-           
-            dispatch(fetchGetDopOptcii(data))
-        })
+    fetchGetDopOptciiFunc: () => {
+        fetch("https://greenpel.ru/dopList.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchGetDopOptcii(data))
+            })
     },
-    fetchGetProfile:()=>{
-        fetch("http://arsplast.ru/typeProfile.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-          
-            dispatch(fetchGetTypeProfile(data))
-           
-        })
+    fetchGetProfile: () => {
+        fetch("https://greenpel.ru/typeProfile.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchGetTypeProfile(data))
+
+            })
     },
-    fetchGetGrassPaketHolder:()=>{
-        fetch("http://arsplast.ru/listGrass.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-         
-            dispatch(fetchGetGrassPaket(data))
-        }) 
+    fetchGetGrassPaketHolder: () => {
+        fetch("https://greenpel.ru/listGrass.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchGetGrassPaket(data))
+            })
     },
-    fetchSuccessGetStvorkiFunc:()=>{
-        fetch("http://arsplast.ru/listStvorki.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-         
-            dispatch(fetchSuccessGetStvorki(data))
-        }) 
+    fetchSuccessGetStvorkiFunc: () => {
+        fetch("https://greenpel.ru/listStvorki.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchSuccessGetStvorki(data))
+            })
     },
-    getIdForMontagFunc:(data)=>{
+    getIdForMontagFunc: (data) => {
         dispatch(getIdForMontag(data))
     },
-    fetchGetInfoStworkaFunc:(id)=>{
+    fetchGetInfoStworkaFunc: (id) => {
         dispatch(fetchGetInfoStworka(id))
     },
-    getGrassSelectPaketFunc:(id)=>{
+    getGrassSelectPaketFunc: (id) => {
         dispatch(getGrassSelectPaket(id))
     },
-    getPriceParamsWinFunc:(id)=>{
-       dispatch(getPriceParamsWin(id))
+    getPriceParamsWinFunc: (id) => {
+        dispatch(getPriceParamsWin(id))
     },
-    getProfileIdFunc:(id)=>{
+    getProfileIdFunc: (id) => {
         dispatch(getProfileId(id))
     },
-    totalGetDataFunc:()=>{
+    totalGetDataFunc: () => {
         dispatch(totalGetData())
     },
-    getTypeWinFunc:(data)=>{
+    getTypeWinFunc: (data) => {
         dispatch(getTypeWin(data))
     },
-    fetchGetArrayPriceGrassFunc:()=>{
-        fetch("http://arsplast.ru/grassPokket.php")
-        .then(response=>{return response.json()})
-        .then(data=>{
-         
-            dispatch(fetchGetArrayPriceGrass(data))
-        }) 
+    fetchGetArrayPriceGrassFunc: () => {
+        fetch("https://greenpel.ru/grassPokket.php")
+            .then(response => { return response.json() })
+            .then(data => {
+
+                dispatch(fetchGetArrayPriceGrass(data))
+            })
     },
-    hadleWindow:(wind)=>{
+    hadleWindow: (wind) => {
         dispatch(setWindow(wind))
     },
-    hadleSetWidth:(widthSet)=>{
+    hadleSetWidth: (widthSet) => {
         dispatch(setWidth(widthSet))
     },
-    handleSetHeight:(heightSet)=>{
+    handlerTypeStworka: (data) => {
+        dispatch(setTypeStworka(data))
+    },
+    handleSetHeight: (heightSet) => {
         dispatch(setHeight(heightSet))
     },
-    handleSetTypeProfile:(typeProfileSet)=>{
+    handleSetTypeProfile: (typeProfileSet) => {
         dispatch(setTypeProfile(typeProfileSet))
     },
-    hadleSetDopOptcii:(dopOptciiSet)=>{
+    hadleSetDopOptcii: (dopOptciiSet) => {
         dispatch(setDopOptcii(dopOptciiSet))
+    },
+    handlerGetDataWin: (data) => {
+        dispatch( getDataWin(data) )
     }
 
 })
 
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)
+

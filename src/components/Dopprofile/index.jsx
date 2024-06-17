@@ -2,12 +2,14 @@ import React from 'react'
 
 
 
-
+let dopniki = {}
 export default class Dopprofile extends React.Component{
     
     constructor(props){
         super(props)
+        
     }
+    
 
     stateDopWin(e){
         let objDobParams = {
@@ -17,7 +19,10 @@ export default class Dopprofile extends React.Component{
         objDobParams.index = e.currentTarget.dataset.id
         objDobParams.stateDop = e.currentTarget.checked
         this.props.fetchSetDopOptciiFunc({...objDobParams})
-        
+        dopniki = {
+            ...dopniki, ...{[this.props.nameForm]:e.currentTarget.checked}
+        }
+        this.props.handlerGetDataWin({dopniki:dopniki})
     }
 
     render()
@@ -28,9 +33,9 @@ export default class Dopprofile extends React.Component{
                 onClick={(e)=> this.stateDopWin(e)}/>
                 <label htmlFor={this.props.idForm}>{this.props.valueInput}</label>
             </div>
-            <div className="priceForm">
+            {/* <div className="priceForm">
                 +{this.props.priceDop}P
-            </div>
+            </div> */}
             
         </div>
     )}

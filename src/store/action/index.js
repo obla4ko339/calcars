@@ -1,169 +1,223 @@
-export const SET_WINDOW                 = "SET_WINDOW"
-export const SET_WIDTH                  = "SET_WIDTH"
-export const SET_HEIGHT                 = "SET_HEIGHT"
-export const SET_TYPE_PROFILE           = "SET_TYPE_PROFILE"
-export const SET_DOP_OPTCII             = "SET_DOP_OPTCII"
-export const FETCH_LIST_SUCCESS         = "FETCH_LIST_SUCCESS"
-export const FETCH_SET_WIND             = "FETCH_SET_WIND"
-export const FETCH_SET_TYPE_PROFILE     = "FETCH_SET_TYPE_PROFILE"
-export const FETCH_SET_DOP_OPTCII       = "FETCH_SET_DOP_OPTCII"
-export const FETCH_GET_DOP_OPTCII       = "FETCH_GET_DOP_OPTCII"
-export const FETCH_GET_TYPE_PROFILE     = "FETCH_GET_TYPE_PROFILE"
-export const FETCH_GET_GRASS_PAKET      = "FETCH_GET_GRASS_PAKET"
-export const FETCH_SUCCESS_GET_PROFILE  = "FETCH_SUCCESS_GET_PROFILE"
-export const FETCH_SUCCESS_GET_STVORKI  = "FETCH_SUCCESS_GET_STVORKI"
-export const FETCH_GET_ARRAY_PRICE_GRASS= "FETCH_GET_ARRAY_PRICE_GRASS"
-export const FETCH_GET_INFO_STWORKA     = "FETCH_GET_INFO_STWORKA"
-export const GET_GRASS_SELECT_PAKET     = "GET_GRASS_SELECT_PAKET"
-export const GET_PRICE_PARAMS_WIN       = "GET_PRICE_PARAMS_WIN"    
-export const GET_PROFILE_ID             = "GET_PROFILE_ID"
-export const TOTAL_GET_DATA             = "TOTAL_GET_DATA"
-export const GET_TYPE_WIN               = "GET_TYPE_WIN"
-export const GET_ID_FOR_MONTAG          = "GET_ID_FOR_MONTAG"  
+export const SET_TYPE_STWORKA = "SET_TYPE_STWORKA"
+export const SET_WINDOW = "SET_WINDOW"
+export const SET_WIDTH = "SET_WIDTH"
+export const SET_HEIGHT = "SET_HEIGHT"
+export const SET_TYPE_PROFILE = "SET_TYPE_PROFILE"
+export const SET_DOP_OPTCII = "SET_DOP_OPTCII"
+export const FETCH_LIST_SUCCESS = "FETCH_LIST_SUCCESS"
+export const FETCH_SET_WIND = "FETCH_SET_WIND"
+export const FETCH_SET_TYPE_PROFILE = "FETCH_SET_TYPE_PROFILE"
+export const FETCH_SET_DOP_OPTCII = "FETCH_SET_DOP_OPTCII"
+export const FETCH_GET_DOP_OPTCII = "FETCH_GET_DOP_OPTCII"
+export const FETCH_GET_TYPE_PROFILE = "FETCH_GET_TYPE_PROFILE"
+export const FETCH_GET_GRASS_PAKET = "FETCH_GET_GRASS_PAKET"
+export const FETCH_SUCCESS_GET_PROFILE = "FETCH_SUCCESS_GET_PROFILE"
+export const FETCH_SUCCESS_GET_STVORKI = "FETCH_SUCCESS_GET_STVORKI"
+export const FETCH_GET_ARRAY_PRICE_GRASS = "FETCH_GET_ARRAY_PRICE_GRASS"
+export const FETCH_GET_INFO_STWORKA = "FETCH_GET_INFO_STWORKA"
+export const GET_GRASS_SELECT_PAKET = "GET_GRASS_SELECT_PAKET"
+export const GET_PRICE_PARAMS_WIN = "GET_PRICE_PARAMS_WIN"
+export const GET_PROFILE_ID = "GET_PROFILE_ID"
+export const TOTAL_GET_DATA = "TOTAL_GET_DATA"
+export const GET_TYPE_WIN = "GET_TYPE_WIN"
+export const GET_ID_FOR_MONTAG = "GET_ID_FOR_MONTAG"
+export const GET_DATA_WIN = "GET_DATA_WIN"
 
-export const getIdForMontag = (data) =>(
+export const getIdForMontag = (data) => (
     {
-        type:GET_ID_FOR_MONTAG,
-        data:data
+        type: GET_ID_FOR_MONTAG,
+        data: data
     }
 )
 
-export const getTypeWin = (data)=>(
+export const getTypeWin = (data) => (
     {
-        type:GET_TYPE_WIN,
-        data:data
+        type: GET_TYPE_WIN,
+        data: data
     }
 )
 
-export const totalGetData = ()=>(
+export const totalGetData = () => (
     {
-        type:TOTAL_GET_DATA
+        type: TOTAL_GET_DATA
     }
 )
 
-export const getProfileId = (data)=>(
+export const getProfileId = (data) => (
     {
-        type:GET_PROFILE_ID,
-        data:data
+        type: GET_PROFILE_ID,
+        data: data
     }
 )
 
 
-export const getPriceParamsWin = (data) =>(
+export const getPriceParamsWin = (data) => (
     {
-        type:GET_PRICE_PARAMS_WIN,
-        data:data
+        type: GET_PRICE_PARAMS_WIN,
+        data: data
     }
 )
 
-export const getGrassSelectPaket = (data)=>(
+export const getGrassSelectPaket = (data) => (
     {
-        type:GET_GRASS_SELECT_PAKET,
-        data:data
+        type: GET_GRASS_SELECT_PAKET,
+        data: data
     }
 )
 
-export const fetchGetInfoStworka = (listStworka)=>(
+export const fetchGetInfoStworka = (listStworka) => (
     {
-        type:FETCH_GET_INFO_STWORKA,
-        data:listStworka
+        type: FETCH_GET_INFO_STWORKA,
+        data: listStworka
     }
 )
 
-export const fetchGetArrayPriceGrass = (listPriceGrass)=>(
+export const fetchGetArrayPriceGrass = (listPriceGrass) => (
     {
-        type:FETCH_GET_ARRAY_PRICE_GRASS,
-        data:listPriceGrass 
+        type: FETCH_GET_ARRAY_PRICE_GRASS,
+        data: listPriceGrass
     }
 )
 
-export const fetchSuccessGetProfile = (typeProfileProps) =>(
+export const fetchSuccessGetProfile = (typeProfileProps) => (
     {
-        type:FETCH_SUCCESS_GET_PROFILE,
-        data:typeProfileProps
+        type: FETCH_SUCCESS_GET_PROFILE,
+        data: typeProfileProps
     }
 )
 
-export const fetchSuccessGetStvorki = (listStvorki)=>(
+export const fetchSuccessGetStvorki = (listStvorki) => (
     {
-        type:FETCH_SUCCESS_GET_STVORKI,
-        data:listStvorki
+        type: FETCH_SUCCESS_GET_STVORKI,
+        data: listStvorki
     }
 )
 
-export const fetchGetGrassPaket = (listGrass) =>(
+export const fetchGetGrassPaket = (listGrass) => (
     {
-        type:FETCH_GET_GRASS_PAKET,
-        data:listGrass
+        type: FETCH_GET_GRASS_PAKET,
+        data: listGrass
     }
 )
 
-export const fetchGetTypeProfile = (listTypeProfile) =>(
+export const fetchGetTypeProfile = (listTypeProfile) => (
     {
-        type:FETCH_GET_TYPE_PROFILE,
-        data:listTypeProfile
+        type: FETCH_GET_TYPE_PROFILE,
+        data: listTypeProfile
     }
 )
 
-export const fetchListSuccess = (list)=>(
+export const fetchListSuccess = (list) => (
     {
-        type:FETCH_LIST_SUCCESS,
-        data:list
+        type: FETCH_LIST_SUCCESS,
+        data: list
     }
 )
 
-export const fetchSetWind = (idWind)=>(
+export const fetchSetWind = (idWind) => (
     {
-        type:FETCH_SET_WIND,
-        data:idWind
+        type: FETCH_SET_WIND,
+        data: idWind
     }
 )
 
-export const fetchSetTypeProfile = (typeProfile, typeProfileId)=>(
+export const fetchSetTypeProfile = (typeProfile, typeProfileId) => (
     {
-        type:FETCH_SET_TYPE_PROFILE,
-        data:typeProfile,
-        id:typeProfileId
+        type: FETCH_SET_TYPE_PROFILE,
+        data: typeProfile,
+        id: typeProfileId
     }
 )
 
-export const fetchSetDopOptcii = (dopOptcii, dopOptciiId)=>(
+export const fetchSetDopOptcii = (dopOptcii, dopOptciiId) => (
     {
-        type:FETCH_SET_DOP_OPTCII,
-        data:dopOptcii,
-        id:dopOptciiId
+        type: FETCH_SET_DOP_OPTCII,
+        data: dopOptcii,
+        id: dopOptciiId
     }
 )
 
-export const fetchGetDopOptcii = (dopOptcii)=>(
+export const fetchGetDopOptcii = (dopOptcii) => (
     {
-        type:FETCH_GET_DOP_OPTCII,
-        data:dopOptcii
+        type: FETCH_GET_DOP_OPTCII,
+        data: dopOptcii
     }
 )
 
-export const setWindow = (widthSet)=>({
-    type:SET_WINDOW,
-    data:widthSet
+export const setWindow = (widthSet) => ({
+    type: SET_WINDOW,
+    data: widthSet
 })
 
-export const setWidth = (widthSet)=>({
-    type:SET_WIDTH,
-    data:widthSet
+export const setWidth = (widthSet) => ({
+    type: SET_WIDTH,
+    data: widthSet
 })
 
-export const setHeight = (heightSet)=>({
-    type:SET_HEIGHT,
-    data:heightSet
+export const setHeight = (heightSet) => ({
+    type: SET_HEIGHT,
+    data: heightSet
 })
 
-export const setTypeProfile = (typeProfileSet)=>({
-    type:SET_TYPE_PROFILE,
-    data:typeProfileSet
+export const setTypeStworka = (typeStworka) => (
+    {
+        type: SET_TYPE_STWORKA,
+        data: typeStworka
+    }
+)
+
+export const setTypeProfile = (typeProfileSet) => ({
+    type: SET_TYPE_PROFILE,
+    data: typeProfileSet
 })
 
-export const setDopOptcii = (dopOptciiSet)=>({
-    type:SET_DOP_OPTCII,
-    data:dopOptciiSet
+export const setDopOptcii = (dopOptciiSet) => ({
+    type: SET_DOP_OPTCII,
+    data: dopOptciiSet
 })
+
+
+// export const getDataWins = (data) => ({
+//     type:GET_DATA_WIN,
+//     data:{
+//         ...data, data
+//     }
+// })
+
+let res = {}
+let balkon = {}
+let balkonGrup = {}
+let winType = 0
+export const getDataWin = (data) => {
+    if(data.listTypeWin){
+        winType = data.listTypeWin
+    }
+    
+    if( winType == 1 ){
+        res= {
+            ...res,...data
+        }
+    }
+
+    if( winType == 2 ){
+        balkon= {
+            ...balkon,...data
+        }
+    }
+
+    if( winType == 3 ){
+        balkonGrup= {
+            ...balkonGrup,...data
+        }
+    }
+    localStorage.setItem("window", JSON.stringify(res) )
+    
+    // res.push(data)
+    return (
+        {
+            type:GET_DATA_WIN,
+            data:{"window":res, "balkon":balkon, "balkonGrup":balkonGrup }
+        }
+    )
+}
 
